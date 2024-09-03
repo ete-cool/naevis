@@ -2045,17 +2045,8 @@ body.show-content .main-content {
 
 /* Notice: Reactive style */
 
-.only_pc {
-  @media screen and (max-width: 1024px) {
-    display: none;
-  }
-}
-.only_mo {
-  display: none;
-  @media screen and (max-width: 1024px) {
-    display: block;
-  }
-}
+.only_pc { @media screen and (max-width: 1024px) { display: none; } }
+.only_mo {  display: none; @media screen and (max-width: 1024px) { display: block; } }
 
 body {
     @media screen and (max-width: 1300px) {
@@ -2092,14 +2083,16 @@ body {
             .question_row.row3 .left .question_box .question_title { font-size: 24px !important; line-height: 32px; word-break: keep-all;}
             .question_row.row3 .left .question_box .question_dec { width: 600px !important; border-radius: 0px, 50px, 50px, 50px; padding: 24px; box-sizing: border-box; font-size: 20px !important; line-height: 32px !important; letter-spacing: -4% !; }
         }
-      }
-      .profile_rect .profile_sub {
-        transform: rotate(0) !important;
-        top: 0;
-        left: 0;
-        span {
-          font-size: 14px !important;
-          height: auto !important;
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        .intro {
+            .naevis_typo { font-size: 130px !important; line-height: 117px !important; }
+            .intro_text .intro_title { font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -2%; }
+            .intro_text .intro_desc { font-size: 14px; line-height: 26px; font-weight: 400; word-break: keep-all; width: 366px; }
+            .intro_text .intro_btn {  padding: 8px 20px; box-sizing: border-box; }
+            .intro_text .intro_btn span { font-size: 13px !important; line-height: 23px; letter-spacing: -4%; }
         }
 
         .part1 {
@@ -2115,66 +2108,15 @@ body {
             .question_dec { margin: 20px 0 0 !important; font-size: 18px !important; line-height: 28px !important;}
             .question_row.row3 { transform: translateY(60px) !important; }
             .question_textbox { padding: 20px !important;}
-            .question_row.row2 .question_box.type2.n2.part1_03 { top: 1140px; width: 90%; right: 100px; max-width: 640px;}
+            .question_row.row2 .question_box.type2.n2.part1_03 { top: 1100px; width: 90%; right: 100px; max-width: 640px;}
         }
-      }
-      .profile_inner .profile_hr {
-        width: 100%;
-        height: 1px;
-        margin-top: 40px;
-      }
-      .profile_right {
-        margin-top: 38px;
-        width: 100%;
-        padding: 0 0 120px;
-      }
-      .profile_right .profile_text {
-        font-size: 40px !important;
-      }
-      .profile_right .profile_desc {
-        font-size: 20px !important;
-      }
-      .profile_right .info_img {
-        width: 30%;
-        position: absolute !important;
-        right: -20px;
-        top: auto !important;
-        bottom: -60px !important;
-      }
-      .profile_right .profile_date {
-        margin-top: 12px;
-      }
     }
-  }
 
-  @media screen and (max-width: 1024px) {
-    .naevis_typo {
-      font-size: 130px !important;
-      line-height: 117px !important;
-    }
-    .intro_text .intro_title {
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 32px;
-      letter-spacing: -2%;
-    }
-    .intro_text .intro_desc {
-      font-size: 14px;
-      line-height: 26px;
-      font-weight: 400;
-      word-break: keep-all;
-      width: 366px;
-    }
-    .intro_text .intro_btn {
-      padding: 8px 20px;
-      box-sizing: border-box;
-    }
-    .intro_text .intro_btn span {
-      font-size: 13px !important;
-      line-height: 23px;
-      letter-spacing: -4%;
-    }
-  }
+    @media screen and (max-width: 768px) {
+        .intro {
+            .quote_txt { font-size: 22px; line-height: 30px; }
+            /* .profile_right .info_img { bottom: auto !important; top: 20px !important; } */
+        }
 
         .part1 {
             .slider { position: relative; }
@@ -2200,5 +2142,4 @@ body {
             .question_row.row3 .left .question_box .question_dec { width: 366px !important; border-radius: 0px, 50px, 50px, 50px; padding: 24px; box-sizing: border-box; font-size: 14px !important; line-height: 24px !important; letter-spacing: -4% !; }
         }
     }
-  }
 }
