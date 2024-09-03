@@ -293,8 +293,7 @@ gsap.set(".interview.type2 .interview_left, .interview.type2 .interview_right", 
 gsap.set(".interview.type2 .interview_left", { x: -100 });
 gsap.set(".interview.type2 .interview_right", { x: 100 });
 
-
-// 새로운 타임라인 추가 - Part 4
+// Part 4 요소들이 등장
 const part4Tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".part4", 
@@ -305,7 +304,6 @@ const part4Tl = gsap.timeline({
   }
 });
 
-// Part 4 요소들이 등장
 part4Tl.from(".part4 .part_label", { opacity: 0, y: -50, duration: 1 })
   .from(".part4 .after_all", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
   .from(".part4 .descbox", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
@@ -326,16 +324,29 @@ part4Tl.from(".part4 .part_label", { opacity: 0, y: -50, duration: 1 })
 
   .from(".part4 .chatbox .chat_container:nth-child(4) .chat-bubble.left", { opacity: 0, x: -100, duration: 1 }, "-=0.8")
   .from(".part4 .chatbox .chat_container:nth-child(4) img:not(.chat-bubble)", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
-  .from(".part4 .chatbox .chat_container:nth-child(4) .chat-bubble.right", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
+  .from(".part4 .chatbox .chat_container:nth-child(4) .chat-bubble.right", { opacity: 0, x: 100, duration: 1 }, "-=0.8");
 
-  // Last-contents 섹션의 요소들이 등장
-  .from(".part4 .last-contents__inner .text-box p", { opacity: 0, y: -50, duration: 1, stagger: 0.5 }, "-=0.8")
-  .from(".part4 .last-contents__inner .text-box .clouds", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
-  .from(".part4 .last-contents__inner .sns-box li", { opacity: 0, y: -50, duration: 1, stagger: 0.2 }, "-=0.8");
-
-// 초기 위치 설정
-gsap.set(".part4 .part_label, .part4 .after_all, .part4 .descbox, .part4 .naevis_logo, .part4 .chatbox .chat_container .chat-bubble, .part4 .chatbox .chat_container img, .part4 .last-contents__inner .text-box p, .part4 .last-contents__inner .text-box .clouds, .part4 .last-contents__inner .sns-box li", { opacity: 0 });
+// 초기 위치 설정 - part4 전용
+gsap.set(".part4 .part_label, .part4 .after_all, .part4 .descbox, .part4 .naevis_logo, .part4 .chatbox .chat_container .chat-bubble, .part4 .chatbox .chat_container img", { opacity: 0 });
 gsap.set(".part4 .chatbox .chat_container .chat-bubble.left", { x: -100 });
 gsap.set(".part4 .chatbox .chat_container .chat-bubble.right", { x: 100 });
 gsap.set(".part4 .chatbox .chat_container img:not(.chat-bubble)", { y: -50 });
-gsap.set(".part4 .chatbox .chat_container img.planet, .part4 .chatbox .chat_container img.planet2, .part4 .last-contents__inner .text-box .clouds", { scale: 0.5 });
+// 새로운 타임라인 추가 - Last Contents 섹션
+const lastContentsTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".last-contents", 
+    start: "top 80%", // .last-contents의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "bottom 100%", // 애니메이션이 끝나는 지점을 뷰포트 끝으로 설정
+    scrub: 1,
+    markers: false, 
+  }
+});
+
+// Last Contents 섹션의 요소들이 위에서부터 차례대로 등장
+lastContentsTl.from(".last-contents__inner ul li img.cover_character", { opacity: 0, y: -50, duration: 1 })
+  .from(".last-contents__inner .text-box p", { opacity: 0, y: -50, duration: 1, stagger: 0.5 }, "-=0.8")
+  .from(".last-contents__inner .text-box .clouds", { opacity: 0, y: -50, duration: 1, stagger: 0.5 }, "-=0.8")
+  .from(".last-contents__inner .sns-box li", { opacity: 0, y: -50, duration: 1, stagger: 0.2 }, "-=0.8");
+
+// 초기 위치 설정
+gsap.set(".last-contents__inner ul li img.cover_character, .last-contents__inner .text-box p, .last-contents__inner .text-box .clouds, .last-contents__inner .sns-box li", { opacity: 0, y: -50 });
