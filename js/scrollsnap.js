@@ -180,3 +180,46 @@ questionTl.fromTo(
 
 // 초기 위치 설정
 gsap.set(".part1_01, .part1_02, .part1_03, .image_layer, .row3 .left, .row3 .right", { opacity: 0, x: -100 });
+
+
+
+
+
+// 통합 타임라인 - Part 2 및 Photo Area
+const part2Tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".part2", 
+    start: "top 80%", // .part2의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "+=3000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
+    scrub: 1,
+    markers: false, 
+  }
+});
+
+// Part 2 요소들이 위에서부터 차례대로 등장
+part2Tl.from(".part2 .logo_part .part_label", { opacity: 0, y: -50, duration: 1 })
+  .from(".part2-cloud1", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".logo_text", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".part2-cloud2", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".text_line1", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".text_line2", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".part2_flower_cloud", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+   // 이미지 요소들 더 빨리 등장하도록 타이밍 조정
+   .fromTo(
+    ".photo_img.img1",
+    { opacity: 0, x: -100 }, 
+    { opacity: 1, x: 0, duration: 1 },
+    "-=0.6" // 이전 애니메이션과 더 빨리 겹치게 조정
+  )
+  .fromTo(
+    ".photo_img.img2",
+    { opacity: 0, x: 100 }, 
+    { opacity: 1, x: 0, duration: 1 },
+    "-=0.8" // 이미지가 더 빠르게 등장하도록 조정
+  )
+
+
+// 초기 위치 설정
+gsap.set(".part2 .logo_part .part_label, .part2-cloud1, .logo_text, .part2-cloud2, .text_line1, .text_line2, .part2_flower_cloud, .photo_img.img1, .photo_img.img2", { opacity: 0, y: -50 });
+
+
