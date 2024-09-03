@@ -126,52 +126,6 @@ function resetPosition(selector) {
   gsap.set(selector, { opacity: 0, y: 50 }); 
 }
 
-// part1-title 타임라인 생성
-const part1Tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".part1-title", 
-    start: "top 75%", 
-    end: "bottom 50%", 
-    scrub: 0.5, 
-    markers: false, 
-  }
-});
-
-// part_label 애니메이션
-part1Tl.fromTo(
-  ".part_label span",
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1 }
-);
-
-// part_title 텍스트가 한 줄씩 순차적으로 나타나는 애니메이션
-part1Tl.fromTo(
-  ".part_title span:nth-child(1)", 
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1 }
-)
-.fromTo(
-  ".part_title span:nth-child(2)", 
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1 },
-  "+=0.3"
-)
-.fromTo(
-  ".part_title span:nth-child(3)", 
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1 },
-  "+=0.3"
-)
-.fromTo(
-  ".part_title span:nth-child(4)", 
-  { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 1 },
-  "+=0.3"
-);
-
-// 초기 상태 설정
-gsap.set(".part_label span, .part_title span", { opacity: 0, y: 20 });
-
 // 새로운 타임라인 추가
 const questionTl = gsap.timeline({
   scrollTrigger: {

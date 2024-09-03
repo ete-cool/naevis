@@ -542,7 +542,6 @@ body.show-content .main-content {
 }
 .part_title span {
   display: inline-block; /* 애니메이션을 위해 인라인 블록 설정 */
-  opacity: 0; /* 시작 시 숨김 */
 }
 .part1-title {
   position: relative; /* 상대 위치 설정 */
@@ -565,6 +564,30 @@ body.show-content .main-content {
 .slider .slider_list {
   display: flex;
 }
+.slider_list_wrapper {
+    width: 100%;
+    overflow: hidden; /* Hide the overflow to create a clean scrolling effect */
+    position: relative;
+  }
+  
+  .slider_list {
+    display: flex;
+    animation: scroll 10s linear infinite; /* Apply infinite scrolling animation */
+  }
+  
+  .slider_item {
+    flex-shrink: 0; /* Prevent items from shrinking */
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Scroll by 50% to cover one complete set of items */
+    }
+  }
+  
 .alert_box {
   position: absolute;
   right: 125px;
@@ -1432,7 +1455,7 @@ body.show-content .main-content {
 .chatbox .chat_container .chat-bubble.right {
   max-width: 815px;
   margin-top: 43px;
-  margin-left: 807px;
+  margin-left: 870px;
   background-color: #50a6ff;
   position: relative;
 }

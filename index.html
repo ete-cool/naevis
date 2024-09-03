@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/layout.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
 
   <body>
@@ -173,6 +176,14 @@
                     <div class="slider_item">
                     <img src="./img/hn_0308_1 3.png" alt="" />
                     </div>
+                    <div class="slider_item">
+                        <img src="./img/hn_0308_1 3.png" alt="" />
+                        </div>
+                        <div class="slider_item">
+                            <img src="./img/hn_0308_1 3.png" alt="" />
+                            </div><div class="slider_item">
+                                <img src="./img/hn_0308_1 3.png" alt="" />
+                                </div>
                     <!-- //slider_item -->
                     <div class="slider_item">
                     <img src="./img/hn_0308_1 3.png" alt="" />
@@ -1230,6 +1241,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/utils/Draggable.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ThrowPropsPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/SplitText.min.js"></script>
 
     <script src="js/scrollsnap.js"></script>
     <script src="js/glitch.js"></script>
@@ -1246,6 +1258,12 @@
       document.getElementById('closegame').addEventListener('click', function () {
         document.getElementById('gamePopup').style.display = 'none';
       });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+    $(".alert_box").draggable(); // jQuery UI의 draggable 함수 사용
+});
     </script>
   </body>
 </html>
