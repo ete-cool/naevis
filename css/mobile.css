@@ -27,6 +27,13 @@ body {
         }
     }
 
+    @media screen and (max-width: 1620px) {
+        .part2-cloud2 { width: 15% !important; left: -20px; top: 100%; min-width: 100px;}
+        .part2_flower_cloud {width: 15%; top: 20px; right: 180px !important; min-width: 180px;}
+        .part2 .alert_boxes .alert_box.box1 { max-width: 680px;}
+        .part2_screen { right: 10% !important;}
+    }
+
     @media screen and (max-width: 1300px) {
         .part2 {
             .part2-cloud1 { width: 10% !important; right: -10px; min-width: 70px;}
