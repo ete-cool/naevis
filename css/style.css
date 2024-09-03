@@ -1861,7 +1861,7 @@ body {
     }
 
     @media screen and (max-width: 1024px) {
-        .naevis_typo { font-size: 130px; line-height: 180px !important; }
+        .naevis_typo { font-size: 130px !important; line-height: 117px !important; }
         .intro_text .intro_title { font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -2%; }
         .intro_text .intro_desc { font-size: 14px; line-height: 26px; font-weight: 400; word-break: keep-all; width: 366px; }
         .intro_text .intro_btn {  padding: 8px 20px; box-sizing: border-box; }
