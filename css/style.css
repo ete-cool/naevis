@@ -1772,13 +1772,14 @@ body.show-content .main-content {
 }
 
 .last-contents .cloud3.clouds {
+  display: none;
   width: 450px;
   left: 0;
   bottom: -60px;
 }
 
 .last-contents .sns-box {
-  padding-bottom: 40px;
+  padding-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
