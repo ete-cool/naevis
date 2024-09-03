@@ -199,7 +199,7 @@ body.show-content .main-content {
 .main-wrapper {
   height: 100%;
 }
-.logo_text {
+.main-wrapper .logo_text {
   position: relative;
   display: flex;
   height: 70%;
@@ -208,7 +208,7 @@ body.show-content .main-content {
   justify-content: space-between;
   z-index: 1;
 }
-.logo_text .text2 { text-align: end;}
+.main-wrapper  .logo_text .text2 { text-align: end;}
 #main1 {
   height: 88vh;
   object-fit: contain;
