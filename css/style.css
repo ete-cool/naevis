@@ -37,11 +37,11 @@ body.show-content .main-content {display: block;}
 
 .interview_txt{font-family:'MinGothic';text-align:right;color:#FFFFFF;width: 100%; justify-content: end; display: flex; font-size: 1.3rem;}
 
-.intro {position: relative;z-index:-99;background: url('../img/intro-back.png') no-repeat center center;background-size: cover;overflow: hidden;height: 100vh; /* Full viewport height */;display: flex;flex-direction: column;}
+.intro {position: relative;z-index:-99;background: url('./img/intro-back.png') no-repeat center center;background-size: cover;overflow: hidden;height: 100vh; /* Full viewport height */;display: flex;flex-direction: column;}
 
 .quote_txt{width:100vw; height:100vh;display:flex;align-items: center; justify-content: center; font-family:'Noto Sans KR';font-style:normal;font-weight:500;font-size:44px;line-height:60px;text-align:center;letter-spacing:-0.02em;background:linear-gradient(90deg, #5FAADD 0%, #ADAFFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent;}
 .naevis_typo{position: absolute; width:100vw; height:100vh;display:flex;align-items: center; justify-content: center;font-family:'PP Editorial New';font-size:311px;font-weight:400;letter-spacing:-0.1em;text-align:center;background:linear-gradient(90deg, #83D3FF 0%, #B4A7FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-fill-color:transparent;}
-.naevis_typo:after{opacity:0.6;background-image:url(../img/OBJECTS.png);background-repeat:no-repeat;background-size:contain;}
+.naevis_typo:after{opacity:0.6;background-image:url('./img/OBJECTS.png');background-repeat:no-repeat;background-size:contain;}
 .naevis_card {width:100vw; height:100vh;display:flex;align-items: center; justify-content: center;position: absolute;}
 
 .profile_card{ position:relative; width:1222px; height:646px;margin: 42px auto 0; padding-top: 28px;padding-right: 19px; padding-bottom: 33px; padding-left:60px;border:2px solid #000; background-color: #fffcf9;}
