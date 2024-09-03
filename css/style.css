@@ -2163,6 +2163,8 @@ body {
             .question_textbox { padding: 20px !important;}
             .question_row.row2 .question_box.type2.n2.part1_03 { top: 1100px; width: 90%; right: 100px; max-width: 640px;}
         }
+
+        .bubble2 { width: 240px !important;}
     }
 
     @media screen and (max-width: 768px) {
@@ -2195,5 +2197,7 @@ body {
             .right.part1_image { width: 366px !important;}
             .question_row.row3 .left .question_box .question_dec { width: 366px !important; border-radius: 0px, 50px, 50px, 50px; padding: 24px; box-sizing: border-box; font-size: 14px !important; line-height: 24px !important; letter-spacing: -4% !; }
         }
+
+        .bubble2 { width: 120px !important;}
     }
 }
