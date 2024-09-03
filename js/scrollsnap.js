@@ -65,7 +65,7 @@ const tl = gsap.timeline({
     start: "top top", // .row2의 상단이 뷰포트의 상단에 닿을 때 시작
     end: "+=3000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
     scrub: true,
-    pin: false, // 애니메이션 동안 .intro 섹션 고정 해제
+    pin: true, // 애니메이션 동안 .row2 섹션 고정
     markers: false, // 시작과 끝 지점을 시각적으로 확인하려면 true로 설정
   }
 });
