@@ -1754,3 +1754,47 @@ body.show-content .main-content {
   top: 50%;
 }
 
+.skate-shoes {
+  width: 250px;
+  top: -1180px;
+}
+.shine-symbol {
+  width: 180px;
+  right: -72px;
+  top: -94px;
+}
+.polaroid {
+  bottom: -500px;
+  width: 400px;
+}
+.paper-symbol {
+  top: -200px;
+  left: -40%;
+}
+.part2-start {
+  top: -97px;
+  left: -51px;
+  width: 180px;
+}
+.game-run {
+  width: 720px;
+  top: 43%;
+  left: 14%;
+}
+.game-group-start .game-start {
+  width: 180px;
+  position: absolute;
+  left: unset;
+  right: 30rem;
+  top: 78px;
+}
+.part2_guitar {
+  bottom: 81px;
+  z-index: 0;
+  left: 32%;
+  width: 554px;
+}
+.part2_screen {
+  right: 23%;
+  bottom: 10%;
+}
