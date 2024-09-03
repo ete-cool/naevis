@@ -232,7 +232,7 @@ body.show-content .main-content {
 .intro {
   position: relative;
   z-index: -99;
-  background: url('../img/intro-back.png') no-repeat center center;
+  background: url('../img/intro-new2.png') no-repeat center center;
   background-size: cover;
   overflow: hidden;
   height: 100vh; /* Full viewport height */
@@ -2091,7 +2091,7 @@ body {
     background-size: cover;
     .head_line { font-family: 'PP Pangaia';}
     .frame_box { display: flex; justify-content: center; .frame_img { max-width: 636px; width: 100%; }}
-    .text_box { margin-bottom: 240px; margin-top: -60px; word-break: keep-all; }
+    .text_box { margin-bottom: 179px; margin-top: -60px; word-break: keep-all; }
     .music-container {margin-bottom: 220px; }
     .img_display { height: auto; margin-top: 0;}
     .img_display img { width: 100%; }

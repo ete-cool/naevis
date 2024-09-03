@@ -57,7 +57,6 @@ document.querySelector('#topart4').addEventListener('click', function(event) {
 });
 
 gsap.registerPlugin(ScrollTrigger);
-
 // 기존 타임라인 생성
 const tl = gsap.timeline({
   scrollTrigger: {
@@ -71,16 +70,56 @@ const tl = gsap.timeline({
 });
 
 // 순차적으로 각 요소가 나타나고 사라지도록 애니메이션 설정
-tl.to(".quote_txt", { opacity: 1, y: 0, duration: 5 }) 
+tl.to(".quote_txt", { 
+    opacity: 1, 
+    y: 0, 
+    duration: 5,
+    onStart: () => changeBackground("../img/intro-new2.png") // quote_txt일 때 백그라운드 변경
+  }) 
   .to(".quote_txt", { opacity: 0, y: -50, duration: 5 }) 
-  .to(".naevis_typo", { opacity: 1, y: 0, duration: 5, onStart: resetPosition, onStartParams: [".naevis_typo"] }) 
+  .to(".naevis_typo", { 
+    opacity: 1, 
+    y: 0, 
+    duration: 5, 
+    onStart: () => changeBackground("../img/intro-new1.png"), // naevis_typo일 때 백그라운드 변경
+    onStartParams: [".naevis_typo"],
+    onComplete: resetPosition 
+  }) 
   .to(".naevis_typo", { opacity: 0, y: -50, duration: 5 }) 
-  .to(".naevis_card", { opacity: 1, y: 0, duration: 5, onStart: resetPosition, onStartParams: [".naevis_card"] }) 
+  .to(".naevis_card", { 
+    opacity: 1, 
+    y: 0, 
+    duration: 5, 
+    onStart: () => changeBackground("../img/intro-new3.png"), // naevis_card일 때 백그라운드 변경
+    onStartParams: [".naevis_card"],
+    onComplete: resetPosition 
+  }) 
   .to(".naevis_card", { opacity: 0, y: -50, duration: 5 }) 
-  .to(".intro_text", { opacity: 1, y: 0, duration: 5 }); 
+  .to(".intro_text", { 
+    opacity: 1, 
+    y: 0, 
+    duration: 5, 
+    onStart: () => changeBackground("../img/intro-new4.png") // intro_text일 때 백그라운드 변경
+  }); 
 
 // 초기 위치를 설정하여 애니메이션이 작동하도록 보장
 gsap.set(".quote_txt, .naevis_typo, .naevis_card, .intro_text", { opacity: 0, y: 50 });
+
+// 함수: 배경 이미지 변경 (부드러운 전환 포함)
+function changeBackground(imagePath) {
+  const introElement = document.querySelector('.intro');
+  gsap.to(introElement, { // 현재 배경을 천천히 페이드 아웃
+    opacity: 0, 
+    duration: 0.3,
+    onComplete: () => {
+      introElement.style.backgroundImage = `url(${imagePath})`; // 배경 이미지 변경
+      gsap.to(introElement, { // 새 배경을 페이드 인
+        opacity: 1, 
+        duration: 0.3 
+      });
+    }
+  });
+}
 
 // 함수: 요소 위치 초기화
 function resetPosition(selector) {
