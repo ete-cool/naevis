@@ -61,7 +61,7 @@ body {
         .main .main-wrapper .logo_text { justify-content: flex-end; transform: translateY(20%); }
         .main .main-wrapper .logo_text .text1 { display: none; }
         .main .main-wrapper .logo_text :is(.text2, .text3) { text-align: center; }
-        .main .main-wrapper .interview_txt {justify-content: center; text-align: center; color: black; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%) !important; font-weight: bold;}
+        .main .main-wrapper .interview_txt {justify-content: center; text-align: center; color: black; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%) !important; font-weight: bold; padding: 0;}
 
         .part2-cloud2 { width: 15% !important; left: -20px; top: 100%; min-width: 100px;}
         .part2_flower_cloud {width: 15%; top: 20px; right: 180px !important; min-width: 180px;}
@@ -103,7 +103,7 @@ body {
     }
 
     @media screen and (max-width: 1024px) {
-        .main .main-wrapper .logo_img img { width: 90% !important; margin-bottom: 60px; transform: translateX(-10%) !important; }
+        .main .main-wrapper .logo_img img { width: 90% !important; margin-bottom: 60px; }
         .main .main-wrapper .logo_text :is(.text2, .text3) img { width: 80%;}
 
         .part2 {
@@ -142,8 +142,8 @@ body {
 
     @media screen and (max-width: 768px) {
         .main .main-wrapper .logo_img {margin-top: 0px;}
-        .main .main-wrapper .logo_text { transform: translateY(30%);}
-        .main .main-wrapper .logo_text :is(.text2, .text3) img { width: 80%; transform: translateY(0%) !important;}
+        .main .main-wrapper .logo_text { transform: translateY(20%);}
+        .main .main-wrapper .logo_text :is(.text2, .text3) img { width: 60%; transform: translateY(0%) !important;}
         .main .main-wrapper .interview_txt { font-size: 16px;}
 
         .part2 {

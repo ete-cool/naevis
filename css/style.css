@@ -178,7 +178,7 @@ body.show-content .main-content {
   width: 100%;
   height: 96vh;
   box-sizing: border-box;
-  padding: 3rem;
+  /* padding: 3rem; */
   background-image: url(../img/back-cloud.png);
   background-size: cover;
 }
@@ -203,6 +203,8 @@ body.show-content .main-content {
   position: relative;
   display: flex;
   height: 70%;
+  box-sizing: border-box;
+  padding:  32px;
   transform: translateY(15%);
   flex-direction: column;
   justify-content: space-between;
@@ -216,6 +218,7 @@ body.show-content .main-content {
 }
 
 .interview_txt {
+  padding: 80px 24px 0;
   font-family: 'MinGothic';
   text-align: right;
   color: #ffffff;
