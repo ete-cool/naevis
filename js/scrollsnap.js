@@ -336,7 +336,7 @@ const lastContentsTl = gsap.timeline({
   scrollTrigger: {
     trigger: ".last-contents", 
     start: "top 80%", // .last-contents의 상단이 뷰포트의 80% 지점에 도달할 때 시작
-    end: "bottom 100%", // 애니메이션이 끝나는 지점을 뷰포트 끝으로 설정
+    end: "bottom 90%", // 애니메이션이 끝나는 지점을 뷰포트 끝으로 설정
     scrub: 1,
     markers: false, 
   }
