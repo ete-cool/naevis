@@ -53,6 +53,12 @@ body {
             .part2_guitar { width: 30%; left: 50%; bottom: 110px; }
         }
 
+        .part3 {
+            .interview { flex-direction: column; align-items: center; gap: 70px; }
+            .interview.type2 { flex-direction: column-reverse; }
+            .interview_left { margin: 0 !important; }
+        }
+
     }
 
     @media screen and (max-width: 1024px) {
@@ -67,6 +73,12 @@ body {
             .question_desc { margin-top: 12px; font-size: 18px !important; line-height:  26px !important; word-break: keep-all;}
             .game-run.part2-img-ab { width: 460px; transform: translate(16%, 0); }
             .game-start.part2-img-ab { width: 100px; left: 60%; }
+        }
+
+        .part3 {
+            .text_box { margin-bottom: 60px; }
+            .text_box p { font-size: 28px !important; font-weight: 400; line-height: 30px; }
+            .music-container {margin-bottom: 120px; }
         }
     }
 
@@ -86,6 +98,15 @@ body {
             .alert_box.box4 { left: 0 !important; margin-top: 140px !important; }
             .game-run.part2-img-ab { width: 270px; transform: translate(16%, 0); }
             .game-start.part2-img-ab { width: 50px; left: 60%; }
+        }
+
+        .part3 { 
+            .part_label { font-size: 15px; line-height: 26px; margin: 100px 0 24px !important; }
+            .head_line { font-size: 62px; line-height: 62px; margin: 0 0 80px; }
+            .interview { gap: 40px; }
+            .interview .inner { margin-top: 30px !important; }
+            .interview_question { font-size: 17px !important; line-height: 23px !important; font-weight: 700 !important; }
+            .interv_desc { font-size: 14px !important; font-weight: 400 !important; line-height: 24px !important;}
         }
     }
 }

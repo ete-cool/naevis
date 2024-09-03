@@ -1160,9 +1160,9 @@ body.show-content .main-content {
 }
 .interview .interview_right {
   display: inline-block;
-  width: 506px;
-  margin-left: 56px;
-  vertical-align: top;
+  /* width: 506px; */
+  /* margin-left: 56px; */
+  /* vertical-align: top; */
 }
 
 .interview.type2 {
@@ -2048,6 +2048,20 @@ body.show-content .main-content {
 .only_mo {  display: none; @media screen and (max-width: 1024px) { display: block; } }
 
 body {
+  /* Todo: 폰트가 없음! 다운받아서 적용필요! */
+  .part3 {
+    background-image: url('../img/part3-background-line.png');
+    background-size: cover;
+    .head_line { font-family: 'PP Pangaia';}
+    .frame_box { display: flex; justify-content: center; .frame_img { max-width: 636px; width: 100%; }}
+    .text_box { margin-bottom: 240px; margin-top: -60px; word-break: keep-all; }
+    .music-container {margin-bottom: 220px; }
+    .img_display { height: auto; margin-top: 0;}
+    .img_display img { width: 100%; }
+    .official_logo { width: 90%; margin: 40px auto 0; }
+    .interview { display: flex; justify-content: space-between; max-width: 1380px; margin: 120px auto 0; box-sizing: border-box; padding: 0 12px; }
+  }
+
     @media screen and (max-width: 1300px) {
         .intro {
                 .naevis_typo {  font-size: 180px; }
