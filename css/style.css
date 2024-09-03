@@ -27,7 +27,7 @@ body.show-content .main-content {display: block;}
 .navigation a{display:inline-block;position:relative;padding:0 83px;font-family:'PP Mori';font-size:calc(100vw / 121);color:#000;text-align:center; text-decoration: none;}
 .navigation-plus {width: 0.7rem;}
 
-.main { width: 100%; height: 96vh; padding: 3rem; background-image:url(../img/back-cloud.png); background-size: cover;}
+.main { width: 100%; height: 96vh; padding: 3rem; background-image:url('./img/back-cloud.png'); background-size: cover;}
 .logo_img {     height: 100%;display: flex;justify-content: center;align-items: center;position: absolute;top: 0;left: 5%;}
 #main1 {height: 88vh;object-fit: contain; width: auto;animation: bounce 0.5s infinite alternate;}
 .main-wrapper {width: 100%; max-width: 1800px; margin: 0 auto;}
