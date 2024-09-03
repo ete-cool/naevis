@@ -1824,7 +1824,27 @@ body.show-content .main-content {
 .last-contents .sns-box li:last-child {
   margin-right: unset;
 }
-
+.text_box {
+    text-align: center; /* Center align the text */
+  }
+  
+  .text_box p {
+    margin: 5px 0; /* Space between lines */
+    font-size: 18px; /* Adjust font size as needed */
+    transition: opacity 0.5s ease; /* Smooth transition for fading */
+  }
+  
+  .faded {
+    opacity: 0.5; /* Set faded lyrics to 50% opacity */
+    color: #888; /* Lighter color for faded lyrics */
+  }
+  
+  .highlight {
+    opacity: 1; /* Full opacity for the current lyric */
+    font-weight: bold; /* Make current lyric bold */
+    color: #fff; /* Set current lyric color */
+  }
+  
 .part2-img-ab {
   position: absolute;
 }

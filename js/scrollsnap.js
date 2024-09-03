@@ -297,8 +297,8 @@ gsap.set(".interview.type2 .interview_right", { x: 100 });
 const part4Tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".part4", 
-    start: "top 80%", // .part4의 상단이 뷰포트의 80% 지점에 도달할 때 시작
-    end: "+=4000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
+    start: "top 70%", // .part4의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "+=2000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
     scrub: 1,
     markers: false, 
   }
@@ -335,7 +335,7 @@ gsap.set(".part4 .chatbox .chat_container img:not(.chat-bubble)", { y: -50 });
 const lastContentsTl = gsap.timeline({
   scrollTrigger: {
     trigger: ".last-contents", 
-    start: "top 80%", // .last-contents의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    start: "top top", // .row2의 상단이 뷰포트의 상단에 닿을 때 시작
     end: "bottom 90%", // 애니메이션이 끝나는 지점을 뷰포트 끝으로 설정
     scrub: 1,
     markers: false, 

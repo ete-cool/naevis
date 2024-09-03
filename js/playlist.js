@@ -22,12 +22,7 @@ const songs = [
     path: 'https://raw.githubusercontent.com/saranshbhardwaj1999/audio/main/Justin_Bieber_Hold_On.mp3',
     displayName: 'Hold On',
     artist: 'Justin Bieber'
-  },
-  {
-    path: 'https://raw.githubusercontent.com/saranshbhardwaj1999/audio/main/Jon_Bellion_All_Time_Low.mp3',
-    displayName: 'All Time Low',
-    artist: 'Jon Bellion'
-  },
+  }
 ];
 
 // Default song index 
@@ -176,3 +171,38 @@ volumeRange.addEventListener("input", setVolume);
 repeatBtn.addEventListener("click", repeat);
 likeBtn.addEventListener("click", like);
 document.querySelector("#list")?.addEventListener("click", musicList);
+// Lyrics array with timestamps (in seconds)
+const lyrics = [
+  { time: 0, text: "In my garden," },
+  { time: 2, text: "there’s a snake crawling." },
+  { time: 5, text: "I’m a wolf. I’m a wolf." },
+  { time: 8, text: "Bite your head before you come here." }
+];
+
+// Function to display lyrics like a karaoke
+function displayLyrics() {
+  const currentTime = audio.currentTime; // Get the current time of the audio
+  let currentIndex = 0; // To hold the index of the current lyric
+
+  // Find the current lyric index
+  for (let i = 0; i < lyrics.length; i++) {
+    if (currentTime >= lyrics[i].time) {
+      currentIndex = i; // Update the current index if the time matches
+    }
+  }
+
+  // Determine the previous, current, and next lyrics
+  const previousLyric = lyrics[currentIndex - 1] ? lyrics[currentIndex - 1].text : '';
+  const currentLyric = lyrics[currentIndex] ? lyrics[currentIndex].text : '';
+  const nextLyric = lyrics[currentIndex + 1] ? lyrics[currentIndex + 1].text : '';
+
+  // Update the text content of the .text_box with the karaoke style lyrics
+  document.querySelector('.text_box').innerHTML = `
+    <p class="faded">${previousLyric}</p><br>
+    <p class="highlight">${currentLyric}</p><br>
+    <p class="faded">${nextLyric}</p>
+  `;
+}
+
+// Event listener to update lyrics with time
+audio.addEventListener("timeupdate", displayLyrics);
