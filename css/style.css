@@ -911,30 +911,29 @@ body.show-content .main-content {
   padding-bottom: 275px;
   font-size: 0;
 }
-.part2 .favorite_snap:before {
+/* .part2 .favorite_snap:before {
   content: '';
-  display: block;
+  display: inline-block;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  right: 50%;
   bottom: 0;
   left: 0;
-  z-index: 100; /* 항상 위에 있도록 높은 z-index 설정 */
-  width: 951px;
-  height: 637px;
+  z-index: 100;
+  width: 100px;
+  margin: 0;
   margin: auto;
+  transform: translateY(-25%);
+  background-size: contain;
   background-image: url(../img/naevis_img.png);
   background-repeat: no-repeat;
-}
+} */
 .part2 .favorite_snap .snap_img {
   position: relative;
   transition: transform 0.2s ease-out, z-index 0.1s; /* 부드러운 전환 효과 */
   cursor: pointer; /* 커서 모양 변경 */
 }
-.part2 .favorite_snap .snap_img:hover {
-  transform: translateY(-10px) scale(1.05); /* 호버 시 이동 및 확대 효과 */
-}
-.part2 .favorite_snap .snap_img.img1 {
+/* .part2 .favorite_snap .snap_img.img1 {
   z-index: 1;
   top: 273px;
 }
@@ -950,7 +949,7 @@ body.show-content .main-content {
   position: absolute;
   left: auto;
   right: 224px;
-}
+} */
 .part2 .alert_boxes {
   padding-bottom: 368px;
   background: url(../img/game_source.png) repeat-x;

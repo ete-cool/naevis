@@ -1,0 +1,52 @@
+body {
+    .part2 {
+        .photo_area { display: flex; justify-content: center;}
+        .favorite_snap .favorite { width: 100%; max-width: 1920px; opacity: 0;}
+        .favorite_snap { position: relative !important;}
+        .snap_img {
+            width: 40%;
+            position: absolute !important;
+            img {width: 100% !important;}
+        }
+        .favorite_snap {
+            position: relative;
+            .skate-shoes { transform: translate(20%, 560%); }
+            .paper-symbol { transform: translate(20%, 500%); }
+            .shine-symbol { transform: translate(20%, 10%); }
+            .part2-img-ab {width: 200px !important;}
+            .img1 { top: 50%; left: 50%; transform: translate(-100%, -80%); }
+            .img1:hover { top: 50%; left: 50%; transform: translate(-100%, -82%); }
+            .img2 { top: 50%; right: 50%; transform: translate(100%, -120%); }
+            .img2:hover { top: 50%; right: 50%; transform: translate(100%, -122%); }
+            .img3 { bottom: 50%; left: 50%; transform: translate(-80%, 100%); }
+            .img3:hover { bottom: 50%; left: 50%; transform: translate(-80%, 98%); }
+            .img4 { bottom: 50%; right: 50%; transform: translate(110%, 90%); }
+            .img4:hover { bottom: 50%; right: 50%; transform: translate(110%, 88%); }
+            .center_img {position: absolute; top: 50%; left: 50%; z-index: 99; transform: translate(-50%, -50%);}
+        }
+    }
+
+    @media screen and (max-width: 1300px) {
+        .part2 {
+        }
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        .part2 {
+            .logo_text { display: flex; justify-content: center;}
+            .text_line1 { font-size: 22px !important; line-height: 30px !important; letter-spacing: -3% !important; color: rgba(253, 255, 146, 1) !important;}
+            .text_line2 { margin: 0 !important;font-size: 22px !important; line-height: 30px !important; letter-spacing: -3% !important; color: rgba(253, 255, 146, 1) !important; }
+            .photo_area { padding: 0;}
+            .question_tit { font-size: 24px !important; word-break: keep-all; }
+            .question_desc { margin-top: 12px; font-size: 18px !important; line-height:  26px !important; word-break: keep-all;}
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .part2 {
+            .question_tit { font-size: 18px !important; word-break: keep-all; }
+            .question_desc { margin-top: 12px; font-size: 14px !important; line-height:  22px !important; word-break: keep-all;}
+        }
+    }
+}
