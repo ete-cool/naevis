@@ -2,6 +2,8 @@ body {
     width: 100%;
     .part2 {
         .photo_area { display: flex; justify-content: center;}
+        img.part2_screen.part2-img-ab.only_pc { display: none; }
+        #gamePopup { position: absolute; right: 20%; }
         .favorite_snap .favorite { width: 100%; max-width: 1920px; opacity: 0;}
         .favorite_snap { position: relative !important;}
         .snap_img {
@@ -84,6 +86,7 @@ body {
             .game-run.part2-img-ab { width: 460px; transform: translate(40%, 0); }
             .game-start.part2-img-ab { width: 100px; left: 60%; }
             .part2_guitar { width: 30%; left: 50%; bottom: 110px; }
+            #gamePopup { position: absolute; top: 50%; right: 50%; transform: translateX(50%) !important; }
         }
 
         .part3 {
