@@ -223,3 +223,27 @@ part2Tl.from(".part2 .logo_part .part_label", { opacity: 0, y: -50, duration: 1 
 gsap.set(".part2 .logo_part .part_label, .part2-cloud1, .logo_text, .part2-cloud2, .text_line1, .text_line2, .part2_flower_cloud, .photo_img.img1, .photo_img.img2", { opacity: 0, y: -50 });
 
 
+// 새로운 타임라인 추가 - Part 3
+const part3Tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".part3", 
+    start: "top 80%", // .part3의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "+=3000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
+    scrub: 1,
+    markers: false, 
+  }
+});
+
+// Part 3 요소들이 위에서부터 차례대로 등장
+part3Tl.from(".part3 .part_label", { opacity: 0, y: -50, duration: 1 })
+  .from(".part3 .head_line", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(".part3 .frame_img.img1", { opacity: 0, x: -100, duration: 1 }, "-=0.8")
+  .from(".part3 .frame_img.img2", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
+  .from(".part3 .bubble1", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
+  .from(".part3 .text_box p:nth-child(1)", { opacity: 0, y: -50, duration: 1 }, "-=0.5")
+  .from(".part3 .text_box p:nth-child(2)", { opacity: 0, y: -50, duration: 1 }, "-=0.8");
+
+// 초기 위치 설정
+gsap.set(".part3 .part_label, .part3 .head_line, .part3 .frame_img.img1, .part3 .frame_img.img2, .part3 .bubble1, .part3 .text_box p", { opacity: 0, y: -50 });
+gsap.set(".part3 .frame_img.img1, .part3 .frame_img.img2", { x: 100 });
+gsap.set(".part3 .bubble1", { scale: 0.5 });
