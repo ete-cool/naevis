@@ -1841,37 +1841,60 @@ body.show-content .main-content {
 
 body {
     @media screen and (max-width: 1300px) {
-    .intro {
-            .naevis_typo {  font-size: 180px; }
-            .profile_card { height: auto; width: calc(100% - 24px); max-width: 600px; min-width: 360px; box-sizing: border-box; padding: 40px 24px; }
-            .profile_sub_wrap { width: 100%; left: 0; top: -60px; transform: rotate(0);}
-            .profile_inner { display: flex; flex-direction: column; align-items: center; }
-            .profile_left { margin: 0 !important; width: 100%; display: flex !important; justify-content: center; }
-            .profile_rect { width: auto !important; height: auto !important; padding: 40px 0 0 !important; }
-            .profile_img { width: 100% !important; height: auto !important; img { width: 100% ;}}
-            .profile_rect .profile_sub { transform: rotate(0) !important; top: 0; left: 0; span { font-size: 14px !important; height: auto !important; }}
-            .profile_rect .profile_qr { display: flex; justify-content: center; align-items: center; padding: 0; margin-top: 20px; a { position: relative; img { position: absolute; top: -5px;} }}
-            .profile_inner .profile_hr { width: 100%; height: 1px; margin-top: 40px;}
-            .profile_right { margin-top: 38px; width: 100%; padding: 0 0 120px; }
-            .profile_right .profile_text { font-size: 40px !important; }
-            .profile_right .profile_desc { font-size: 20px !important; }
-            .profile_right .info_img { width: 30%; position: absolute !important; right: -20px; top: auto !important; bottom: -60px !important; }
-            .profile_right .profile_date { margin-top: 12px; }
+        .intro {
+                .naevis_typo {  font-size: 180px; }
+                .profile_card { height: auto; width: calc(100% - 24px); max-width: 600px; min-width: 360px; box-sizing: border-box; padding: 40px 24px; }
+                .profile_sub_wrap { width: 100%; left: 0; top: -60px; transform: rotate(0);}
+                .profile_inner { display: flex; flex-direction: column; align-items: center; }
+                .profile_left { margin: 0 !important; width: 100%; display: flex !important; justify-content: center; }
+                .profile_rect { width: auto !important; height: auto !important; padding: 40px 0 0 !important; }
+                .profile_img { width: 100% !important; height: auto !important; img { width: 100% ;}}
+                .profile_rect .profile_sub { transform: rotate(0) !important; top: 0; left: 0; span { font-size: 14px !important; height: auto !important; }}
+                .profile_rect .profile_qr { display: flex; justify-content: center; align-items: center; padding: 0; margin-top: 20px; a { position: relative; img { position: absolute; top: -5px;} }}
+                .profile_inner .profile_hr { width: 100%; height: 1px; margin-top: 40px;}
+                .profile_right { margin-top: 38px; width: 100%; padding: 0 0 120px; }
+                .profile_right .profile_text { font-size: 40px !important; }
+                .profile_right .profile_desc { font-size: 20px !important; }
+                .profile_right .info_img { width: 30%; position: absolute !important; right: -20px; top: auto !important; bottom: -60px !important; }
+                .profile_right .profile_date { margin-top: 12px; }
+            }
+
+        .part1 {
+            .part1-wrapper { padding: 100px 0; box-sizing: border-box; }
+            .part1-wrapper { margin: 0 auto; }
+            .part1-title { display: flex; flex-direction: column; align-items: center; }
+            .part1-title .part_title span { text-align: center !important; font-size: 180px; line-height: 130px;}
         }
+
     }
 
     @media screen and (max-width: 1024px) {
-        .naevis_typo { font-size: 130px !important; line-height: 117px !important; }
-        .intro_text .intro_title { font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -2%; }
-        .intro_text .intro_desc { font-size: 14px; line-height: 26px; font-weight: 400; word-break: keep-all; width: 366px; }
-        .intro_text .intro_btn {  padding: 8px 20px; box-sizing: border-box; }
-        .intro_text .intro_btn span { font-size: 13px !important; line-height: 23px; letter-spacing: -4%; }
+        .intro {
+            .naevis_typo { font-size: 130px !important; line-height: 117px !important; }
+            .intro_text .intro_title { font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -2%; }
+            .intro_text .intro_desc { font-size: 14px; line-height: 26px; font-weight: 400; word-break: keep-all; width: 366px; }
+            .intro_text .intro_btn {  padding: 8px 20px; box-sizing: border-box; }
+            .intro_text .intro_btn span { font-size: 13px !important; line-height: 23px; letter-spacing: -4%; }
+        }
+
+        .part1 {
+            .part1-title .part_label { margin: 0 !important; padding: 12px 14px; border-radius: 100px; width: 64px; height: 36px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; }
+            .part1-title .part_label span { font-size: 15px; font-weight: 400; line-height: 26px; }
+            .part1-title .part_title { margin: 24px;}
+            .part1-title .part_title span { text-align: center !important; font-size: 80px !important; line-height: 50px; white-space: nowrap;}
+            .slider { margin-top: 50px; width: 100%; overflow: hidden; }
+            .slider .slider_list { width: 140vw !important; transform: translateX(-12.5%);  }
+        }
     }
 
     @media screen and (max-width: 768px) {
         .intro {
             .quote_txt { font-size: 22px; line-height: 30px; }
             /* .profile_right .info_img { bottom: auto !important; top: 20px !important; } */
+        }
+
+        .part1 {
+            .slider { position: relative; }
         }
     }
 }
