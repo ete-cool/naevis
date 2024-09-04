@@ -362,46 +362,46 @@ lastContentsTl.from(".last-contents__inner ul li img.cover_character", { opacity
 // 초기 위치 설정
 gsap.set(".last-contents__inner ul li img.cover_character, .last-contents__inner .text-box p, .last-contents__inner .text-box .clouds, .last-contents__inner .sns-box li", { opacity: 0, y: -50 });
 gsap.registerPlugin(SplitText, ScrollTrigger);
+// 모든 요소 선택
+const titles = document.querySelectorAll(".question_title, .question_tit2, ._tit, .interview_question, .chat-title");
+const descriptions = document.querySelectorAll(".question_dec, .question_desc, ._desc, .interv_desc, .chat-desc");
 
-  // 모든 요소 선택
-  const titles = document.querySelectorAll(".question_title, .question_tit2, ._tit, .interview_question, .chat-title");
-  const descriptions = document.querySelectorAll(".question_dec, .question_desc, ._desc, .interv_desc, .chat-desc");
+// 제목 애니메이션 설정 (타자 효과)
+titles.forEach((title) => {
+  var splitTitle = new SplitText(title, { type: "chars" });
+  var chars = splitTitle.chars; // 각 문자를 분리하여 배열로 만듦
 
-  // 제목 애니메이션 설정
-  titles.forEach((title) => {
-    gsap.from(title, {
-      duration: 0.8,
-      opacity: 0,
-      y: 50,
-      ease: "back",
-      scrollTrigger: {
-        trigger: title,
-        start: "top 90%", // 화면의 90% 높이에서 트리거
-        toggleActions: "play none none reset", // 다시 실행되도록 설정
-      }
-    });
+  gsap.set(chars, { opacity: 0 });
+
+  gsap.to(chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05, // 각 문자가 차례로 나타나도록 설정
+    scrollTrigger: {
+      trigger: title,
+      start: "top 90%", // 화면의 90% 높이에서 트리거
+      toggleActions: "play none none reset", // 다시 실행되도록 설정
+    }
   });
+});
 
-  // 설명 애니메이션 설정
-  descriptions.forEach((desc) => {
-    var splitTextInstance = new SplitText(desc, { type: "words,chars" });
-    var chars = splitTextInstance.chars; // 각 문자를 분리하여 배열로 만듦
+// 설명 애니메이션 설정 (타자 효과)
+descriptions.forEach((desc) => {
+  var splitTextInstance = new SplitText(desc, { type: "words,chars" });
+  var chars = splitTextInstance.chars; // 각 문자를 분리하여 배열로 만듦
 
-    gsap.set(desc, { perspective: 400 });
+  gsap.set(chars, { opacity: 0 });
 
-    gsap.from(chars, {
-      duration: 0.5,
-      opacity: 0,
-      scale: 0,
-      y: 80,
-      rotationX: 180,
-      transformOrigin: "0% 50% -50",
-      ease: "back",
-      stagger: 0.01,
-      scrollTrigger: {
-        trigger: desc,
-        start: "top 90%", // 화면의 90% 높이에서 트리거
-        toggleActions: "play none none reset", // 다시 실행되도록 설정
-      }
-    });
+  gsap.to(chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05, // 각 문자가 차례로 나타나도록 설정
+    scrollTrigger: {
+      trigger: desc,
+      start: "top 90%", // 화면의 90% 높이에서 트리거
+      toggleActions: "play none none reset", // 다시 실행되도록 설정
+    }
   });
+});
