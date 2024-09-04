@@ -57,7 +57,7 @@ body.show-content .main-content {
     padding: 3rem;
 }
 .loading-top {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   line-height: 1.5;
   font-family: '8bit';
   color: white;
@@ -85,7 +85,7 @@ body.show-content .main-content {
   align-items: center;
 }
 .loading-bottom {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   font-family: '8bit';
   color: white;

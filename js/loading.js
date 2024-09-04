@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Apply typewriter effect to each element in the loading screen
     elements.forEach(({ selector, text }) => {
         const element = document.querySelector(selector);
-        if (element) typeText(element, text);
+        if (element) {
+            element.innerHTML = ''; // Clear content to avoid duplication
+            typeText(element, text);
+        }
     });
 
     // Automatically hide the loading screen after 3 seconds
@@ -63,7 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (entry.isIntersecting) {
                 profileElements.forEach(({ selector, text }) => {
                     const element = document.querySelector(selector);
-                    if (element) typeText(element, text);
+                    if (element) {
+                        element.textContent = ''; // Clear content to reset animation
+                        typeText(element, text);
+                    }
                 });
                 profileObserver.disconnect(); // Stop observing once animated
             }
@@ -108,10 +114,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 200); // Typing speed in milliseconds
         });
 
-        // If the element is a time indicator, start time increment animation
+        // Start time increment animation for time indicators
         if (element.matches('.loading-top-left, .loading-top-right')) {
-            const timeText = element.querySelector('div:last-child span');
-            if (timeText) updateTime(timeText, lines[2]);
+            const timeText = lines[2]; // Always start from the third line (time part)
+            startUpdatingTime(element, timeText); // Pass the correct time span
         }
     }
 
@@ -129,8 +135,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500); // Blinking speed in milliseconds
     }
 
-    function updateTime(timeSpan, initialTime) {
+    function startUpdatingTime(element, initialTime) {
         let [hours, minutes, seconds] = initialTime.split(':').map(Number);
+        if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+        }
+
+        // Use a dedicated element to separate the static and dynamic parts
+        const staticContent = element.innerHTML.split('\n').slice(0, -1).join('<br>');
+        element.innerHTML = `${staticContent}<br>`; // Ensure static content remains
+
+        // Create or find the existing dynamic time span
+        let timeSpan = element.querySelector('.dynamic-time');
+        if (!timeSpan) {
+            timeSpan = document.createElement('span');
+            timeSpan.className = 'dynamic-time';
+            timeSpan.textContent = initialTime;
+            element.appendChild(timeSpan);
+        }
+
         setInterval(() => {
             seconds++;
             if (seconds >= 60) {
@@ -143,8 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            const originalText = timeSpan.parentElement.textContent.split('\n')[0];
-            timeSpan.textContent = originalText + '\n' + formattedTime;
+            timeSpan.textContent = formattedTime; // Only update the dynamic time
         }, 1000); // Update every second
     }
 });
