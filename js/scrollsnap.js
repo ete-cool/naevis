@@ -21,18 +21,32 @@ function startAnimations() {
 
   // 순차적으로 요소들이 나타나는 애니메이션 설정
   mainTl.from(".interview_txt", { opacity: 0, y: -100, duration: 1 })
-    .from(".main_logo_text .text1", { opacity: 0, x: -100, duration: 0.8 }, "-=0.5") // 왼쪽에서 등장
-    .from(".main_logo_text .text2", { opacity: 0, x: 100, duration: 0.8 }, "-=0.4") // 오른쪽에서 등장
-    .from(".main_logo_text .text3", { opacity: 0, x: -100, duration: 0.8 }, "-=0.4") // 왼쪽에서 등장
+    .from(".main_logo_text .text1 img", {
+      opacity: 0,
+      y: (index) => (index % 2 === 0 ? -20 : 20), // 위아래로 약간의 차이를 두고 등장
+      duration: 0.8,
+      stagger: 0.1 // 각 글자가 순차적으로 나타나도록 설정
+    }, "-=0.5")
+    .from(".main_logo_text .text2 img", {
+      opacity: 0,
+      y: (index) => (index % 2 === 0 ? -20 : 20),
+      duration: 0.8,
+      stagger: 0.1
+    }, "-=0.4")
+    .from(".main_logo_text .text3 img", {
+      opacity: 0,
+      y: (index) => (index % 2 === 0 ? -20 : 20),
+      duration: 0.8,
+      stagger: 0.1
+    }, "-=0.4")
     .from(".logo_img", { opacity: 0, y: -100, duration: 1 }, "-=0.5");
 
   // 초기 위치 설정
-  gsap.set(".interview_txt, .main_logo_text .text1, .main_logo_text .text2, .main_logo_text .text3, .logo_img", { opacity: 0, y: -100 });
-  gsap.set(".main_logo_text .text1", { x: -100 }); // 왼쪽 초기 위치 설정
-  gsap.set(".main_logo_text .text2", { x: 100 }); // 오른쪽 초기 위치 설정
-  gsap.set(".main_logo_text .text3", { x: -100 }); // 왼쪽 초기 위치 설정
+  gsap.set(".interview_txt, .main_logo_text .text1 img, .main_logo_text .text2 img, .main_logo_text .text3 img, .logo_img", { opacity: 0 });
+  gsap.set(".main_logo_text .text1 img", { y: (index) => (index % 2 === 0 ? -20 : 20) });
+  gsap.set(".main_logo_text .text2 img", { y: (index) => (index % 2 === 0 ? -20 : 20) });
+  gsap.set(".main_logo_text .text3 img", { y: (index) => (index % 2 === 0 ? -20 : 20) });
 }
-
 
 // 각 버튼 클릭 시 해당 섹션으로 스르륵 스크롤 이동 설정
 document.querySelector('#tointro').addEventListener('click', function(event) {
