@@ -25,10 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Elements for Part 1 animation
     const part1Elements = [
         { selector: '.part_label span', text: 'Part1' },
-        { selector: '.part_title span:nth-child(1)', text: 'FROM' },
-        { selector: '.part_title span:nth-child(2)', text: 'KWANGYA' },
-        { selector: '.part_title span:nth-child(3)', text: 'TO' },
-        { selector: '.part_title span:nth-child(4)', text: 'REAL WORLD' }
+        { selector: '.part_title span:nth-child(1)', text: 'FROM KWANGYA' },
+        { selector: '.part_title span:nth-child(2)', text: 'TO REAL WORLD' }
     ];
 
     // Observer to apply typewriter effect when elements enter the viewport
