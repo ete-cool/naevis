@@ -953,6 +953,7 @@ body.show-content .main-content {
 .part2 .logo_text {
   position: relative;
   margin-top: 55px;
+  display: flex;flex-direction: column;
 }
 .part2 .text_lines {
   position: relative;
