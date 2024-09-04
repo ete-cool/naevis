@@ -79,14 +79,14 @@ tl.to(".quote_txt", {
     opacity: 1, 
     y: 0, 
     duration: 5,
-    onStart: () => changeBackground("./img/intro-new2.png") // quote_txt일 때 백그라운드 변경
+    onStart: () => changeBackground("intro-new2.png") // quote_txt일 때 백그라운드 변경
   }) 
   .to(".quote_txt", { opacity: 0, y: -50, duration: 5 }) 
   .to(".naevis_typo", { 
     opacity: 1, 
     y: 0, 
     duration: 5, 
-    onStart: () => changeBackground("./img/intro-new1.png"), // naevis_typo일 때 백그라운드 변경
+    onStart: () => changeBackground("intro-new1.png"), // naevis_typo일 때 백그라운드 변경
     onStartParams: [".naevis_typo"],
     onComplete: resetPosition 
   }) 
@@ -95,7 +95,7 @@ tl.to(".quote_txt", {
     opacity: 1, 
     y: 0, 
     duration: 5, 
-    onStart: () => changeBackground("./img/intro-new3.png"), // naevis_card일 때 백그라운드 변경
+    onStart: () => changeBackground("intro-new3.png"), // naevis_card일 때 백그라운드 변경
     onStartParams: [".naevis_card"],
     onComplete: resetPosition 
   }) 
@@ -104,7 +104,7 @@ tl.to(".quote_txt", {
     opacity: 1, 
     y: 0, 
     duration: 5, 
-    onStart: () => changeBackground("./img/intro-new4.png") // intro_text일 때 백그라운드 변경
+    onStart: () => changeBackground("intro-new4.png") // intro_text일 때 백그라운드 변경
   }); 
 
 // 초기 위치를 설정하여 애니메이션이 작동하도록 보장
