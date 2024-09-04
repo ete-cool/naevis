@@ -55,8 +55,9 @@ document.querySelector('#topart4').addEventListener('click', function(event) {
   event.preventDefault();
   gsap.to(window, {duration: 1, scrollTo: ".part4"});
 });
-
+// gsap 플러그인 등록
 gsap.registerPlugin(ScrollTrigger);
+
 // 기존 타임라인 생성
 const tl = gsap.timeline({
   scrollTrigger: {
@@ -105,19 +106,25 @@ tl.to(".quote_txt", {
 // 초기 위치를 설정하여 애니메이션이 작동하도록 보장
 gsap.set(".quote_txt, .naevis_typo, .naevis_card, .intro_text", { opacity: 0, y: 50 });
 
-// 함수: 배경 이미지 변경 (부드러운 전환 포함)
+// 함수: 부드러운 배경 이미지 변경 (중첩된 타임라인 사용)
 function changeBackground(imagePath) {
   const introElement = document.querySelector('.intro');
-  gsap.to(introElement, { // 현재 배경을 천천히 페이드 아웃
-    opacity: 0, 
-    duration: 0.3,
+  
+  // 타임라인 생성
+  const bgChangeTl = gsap.timeline();
+
+  // 현재 배경을 페이드 아웃하면서 동시에 새로운 배경을 적용
+  bgChangeTl.to(introElement, { 
+    opacity: 0.5, // 0까지 가지 않고 반투명 상태로 유지하여 흰 화면 방지
+    duration: 0.6, // 더 긴 시간으로 설정하여 더 부드러운 전환
+    ease: "power2.out", // 좀 더 부드러운 easing 적용
     onComplete: () => {
       introElement.style.backgroundImage = `url(${imagePath})`; // 배경 이미지 변경
-      gsap.to(introElement, { // 새 배경을 페이드 인
-        opacity: 1, 
-        duration: 0.3 
-      });
     }
+  }).to(introElement, {
+    opacity: 1, // 새로운 배경을 부드럽게 페이드 인
+    duration: 0.6, // 페이드 인 시간도 늘려서 자연스럽게
+    ease: "power2.in"
   });
 }
 
