@@ -354,8 +354,8 @@ gsap.set(".last-contents__inner ul li img.cover_character, .last-contents__inner
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
   // 모든 요소 선택
-  const titles = document.querySelectorAll(".question_title, .question_tit2");
-  const descriptions = document.querySelectorAll(".question_dec, .question_desc");
+  const titles = document.querySelectorAll(".question_title, .question_tit2,._tit");
+  const descriptions = document.querySelectorAll(".question_dec, .question_desc,._desc");
 
   // 제목 애니메이션 설정
   titles.forEach((title) => {
