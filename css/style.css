@@ -1031,11 +1031,11 @@ body.show-content .main-content {
 }
 .part2 .alert_boxes .alert_box.box1 {
   width: 100%;
-  max-width: 897px;
+  max-width: 700px;
 }
 .part2 .alert_boxes .alert_box.box2 {
   margin-top: 278px;
-  margin-left: -150px;
+  margin-left: -53px;
 }
 .part2 .alert_boxes .alert_box.box2 .alert_top {
   background-color: #d6eaff;

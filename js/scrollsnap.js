@@ -350,12 +350,11 @@ lastContentsTl.from(".last-contents__inner ul li img.cover_character", { opacity
 
 // 초기 위치 설정
 gsap.set(".last-contents__inner ul li img.cover_character, .last-contents__inner .text-box p, .last-contents__inner .text-box .clouds, .last-contents__inner .sns-box li", { opacity: 0, y: -50 });
-
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
   // 모든 요소 선택
-  const titles = document.querySelectorAll(".question_title, .question_tit2,._tit,.interview_question,.chat-title");
-  const descriptions = document.querySelectorAll(".question_dec, .question_desc,._desc,.interv_desc,.chat-desc");
+  const titles = document.querySelectorAll(".question_title, .question_tit2, ._tit, .interview_question, .chat-title");
+  const descriptions = document.querySelectorAll(".question_dec, .question_desc, ._desc, .interv_desc, .chat-desc");
 
   // 제목 애니메이션 설정
   titles.forEach((title) => {
@@ -367,7 +366,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
       scrollTrigger: {
         trigger: title,
         start: "top 90%", // 화면의 90% 높이에서 트리거
-        toggleActions: "play none none none",
+        toggleActions: "play none none reset", // 다시 실행되도록 설정
       }
     });
   });
@@ -391,7 +390,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
       scrollTrigger: {
         trigger: desc,
         start: "top 90%", // 화면의 90% 높이에서 트리거
-        toggleActions: "play none none none",
+        toggleActions: "play none none reset", // 다시 실행되도록 설정
       }
     });
   });
