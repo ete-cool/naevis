@@ -41,6 +41,20 @@ body.show-content .main-content {
 .main-content {
   display: none;
 }
+
+.main_logo_text {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    height: 100%;
+    justify-content: space-between;width: 100%;
+}
+.main_logo_text .text2 {
+    position: absolute;
+    right: 0;
+    top: 44vh;
+    padding: 3rem;
+}
 .loading-top {
   font-size: 0.9rem;
   line-height: 1.5;
@@ -261,7 +275,7 @@ body.show-content .main-content {
 }
 
 .interview_txt {
-  padding: 80px 24px 0;
+  padding: 3rem 3rem 0 0;
   font-family: 'MinGothic';
   text-align: right;
   color: #ffffff;
@@ -2195,7 +2209,7 @@ body {
       }
     }
     .text_box {
-      margin-bottom: 179px;
+      margin-bottom: 100px;
       margin-top: -60px;
       word-break: keep-all;
     }

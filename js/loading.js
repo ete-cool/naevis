@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Elements to be updated with typewriter effect
     const elements = [
         { selector: '.loading-top-left', text: 'CH 0\nPLAY\n0:00:00' },
         { selector: '.loading-top-right', text: 'TAPE\nREC\n0:00:00' },
@@ -7,17 +8,21 @@ document.addEventListener('DOMContentLoaded', function () {
         { selector: '.loading-center h1', text: 'nævis calling...' }
     ];
 
+    // Apply typewriter effect to each element in the loading screen
     elements.forEach(({ selector, text }) => {
-        typeText(document.querySelector(selector), text);
+        const element = document.querySelector(selector);
+        if (element) typeText(element, text);
     });
 
-    // 3초 뒤에 loading 화면을 자동으로 숨기기
-    const loadingElement = document.querySelector('.loading');
+    // Automatically hide the loading screen after 3 seconds
     setTimeout(() => {
-        loadingElement.classList.add('hidden');
+        const loadingElement = document.querySelector('.loading');
+        if (loadingElement) {
+            loadingElement.classList.add('hidden');
+        }
     }, 3000); // 3000 milliseconds = 3 seconds
 
-    // Apply typewriter effect to part1-title elements when they enter the viewport
+    // Elements for Part 1 animation
     const part1Elements = [
         { selector: '.part_label span', text: 'Part1' },
         { selector: '.part_title span:nth-child(1)', text: 'FROM' },
@@ -26,54 +31,55 @@ document.addEventListener('DOMContentLoaded', function () {
         { selector: '.part_title span:nth-child(4)', text: 'REAL WORLD' }
     ];
 
+    // Observer to apply typewriter effect when elements enter the viewport
     const part1Observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Restart the animation each time the section enters the viewport
                 part1Elements.forEach(({ selector, text }) => {
                     const element = document.querySelector(selector);
                     if (element) {
-                        // Clear the element's content to reset the animation
-                        element.textContent = '';
+                        element.textContent = ''; // Clear content to reset animation
                         typeText(element, text);
                     }
                 });
+                part1Observer.unobserve(entry.target); // Stop observing once animated
             }
         });
-    }, { threshold: 0.1 }); // Trigger when at least 10% of the element is visible
+    }, { threshold: 0.1 });
 
     const part1Section = document.querySelector('.part1-title');
     if (part1Section) {
         part1Observer.observe(part1Section);
     }
 
-    // Observer for profile section
+    // Elements for profile section animation
     const profileElements = [
         { selector: '.profile_text', text: 'nævis calling' },
         { selector: '.profile_desc', text: 'name : naevis\nheight : 168cm\nsymbol : butterfly\norigin: Digital World "KWANGYA"\ndebut: 24.09.10 “Done”\nspecialty: Flexible Character' },
         { selector: '.profile_date', text: '2024.09.23' }
     ];
 
-    const observer = new IntersectionObserver(entries => {
+    // Observer to apply typewriter effect to profile section
+    const profileObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 profileElements.forEach(({ selector, text }) => {
-                    typeText(document.querySelector(selector), text);
+                    const element = document.querySelector(selector);
+                    if (element) typeText(element, text);
                 });
-                observer.disconnect(); // Stop observing after animation starts
+                profileObserver.disconnect(); // Stop observing once animated
             }
         });
     });
 
-    // Start observing the profile right section
     const profileSection = document.querySelector('.profile_right');
     if (profileSection) {
-        observer.observe(profileSection);
+        profileObserver.observe(profileSection);
     }
 
+    // Function to apply typewriter effect
     function typeText(element, text) {
         const lines = text.split('\n');
-
         element.innerHTML = ''; // Clear existing text
 
         lines.forEach((line, lineIndex) => {
@@ -92,29 +98,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (index === line.length) {
                     clearInterval(typingInterval);
 
-                    // Add blinking effect to all elements
                     if (lineIndex === lines.length - 1) {
                         span.classList.remove('typing-effect');
                         span.classList.add('blinking-effect');
 
-                        // Add blinking dots if needed
                         if (element.matches('.loading-center h1')) {
                             addBlinkingDots(span); // Blinking dots effect
                         }
                     }
                 }
-            }, 200); // Slower typing speed in milliseconds
+            }, 200); // Typing speed in milliseconds
         });
 
-        // Start time increment animation if it contains time
+        // If the element is a time indicator, start time increment animation
         if (element.matches('.loading-top-left, .loading-top-right')) {
-            const timeText = element.querySelector('div:last-child span'); // Get the span containing the time
+            const timeText = element.querySelector('div:last-child span');
             if (timeText) updateTime(timeText, lines[2]);
         }
     }
 
     function addBlinkingDots(span) {
-        const textWithoutDots = span.textContent.replace(/\.*$/, ''); // Remove trailing dots
+        const textWithoutDots = span.textContent.replace(/\.*$/, '');
         span.textContent = textWithoutDots;
         const dots = document.createElement('span');
         dots.classList.add('dots');
@@ -122,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let dotCount = 0;
         setInterval(() => {
-            dotCount = (dotCount + 1) % 4; // Dots count: 0, 1, 2, 3
+            dotCount = (dotCount + 1) % 4;
             dots.textContent = '.'.repeat(dotCount);
         }, 500); // Blinking speed in milliseconds
     }
@@ -141,8 +145,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            const originalText = timeSpan.parentElement.textContent.split('\n')[0]; // Preserve original text like "TAPE" or "CH 0"
-            timeSpan.textContent = originalText + '\n' + formattedTime; // Update only the time text
-        }, 4444); // Update every second
+            const originalText = timeSpan.parentElement.textContent.split('\n')[0];
+            timeSpan.textContent = originalText + '\n' + formattedTime;
+        }, 1000); // Update every second
     }
 });

@@ -21,14 +21,18 @@ function startAnimations() {
 
   // 순차적으로 요소들이 나타나는 애니메이션 설정
   mainTl.from(".interview_txt", { opacity: 0, y: -100, duration: 1 })
-    .from(".main_logo_text .text1", { opacity: 0, y: -100, duration: 0.8 }, "-=0.5")
-    .from(".main_logo_text .text2", { opacity: 0, y: -100, duration: 0.8 }, "-=0.4")
-    .from(".main_logo_text .text3", { opacity: 0, y: -100, duration: 0.8 }, "-=0.4")
+    .from(".main_logo_text .text1", { opacity: 0, x: -100, duration: 0.8 }, "-=0.5") // 왼쪽에서 등장
+    .from(".main_logo_text .text2", { opacity: 0, x: 100, duration: 0.8 }, "-=0.4") // 오른쪽에서 등장
+    .from(".main_logo_text .text3", { opacity: 0, x: -100, duration: 0.8 }, "-=0.4") // 왼쪽에서 등장
     .from(".logo_img", { opacity: 0, y: -100, duration: 1 }, "-=0.5");
 
   // 초기 위치 설정
   gsap.set(".interview_txt, .main_logo_text .text1, .main_logo_text .text2, .main_logo_text .text3, .logo_img", { opacity: 0, y: -100 });
+  gsap.set(".main_logo_text .text1", { x: -100 }); // 왼쪽 초기 위치 설정
+  gsap.set(".main_logo_text .text2", { x: 100 }); // 오른쪽 초기 위치 설정
+  gsap.set(".main_logo_text .text3", { x: -100 }); // 왼쪽 초기 위치 설정
 }
+
 
 // 각 버튼 클릭 시 해당 섹션으로 스르륵 스크롤 이동 설정
 document.querySelector('#tointro').addEventListener('click', function(event) {
