@@ -1,19 +1,15 @@
-// .loading의 hidden 상태 변화를 감지하기 위한 MutationObserver 생성
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.attributeName === "class") {
-      const isHidden = mutation.target.classList.contains("hidden");
-      if (isHidden) {
-        // hidden 상태가 되면 애니메이션 시작
-        startAnimations();
-        observer.disconnect(); // 더 이상 감지하지 않도록 observer 해제
-      }
+// IntersectionObserver 설정
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // 요소가 뷰포트에 들어오면 애니메이션 시작
+      startAnimations();
     }
   });
-});
+}, { threshold: 0.1 }); // 요소가 10% 이상 보이면 콜백 실행
 
-// .loading 요소의 class 변화를 감지하도록 설정
-observer.observe(document.querySelector('.loading'), { attributes: true });
+// .main_logo_text 요소의 가시성을 감지하도록 설정
+observer.observe(document.querySelector('.main_logo_text'));
 
 // 애니메이션 시작 함수
 function startAnimations() {
@@ -47,6 +43,7 @@ function startAnimations() {
   gsap.set(".main_logo_text .text2 img", { y: (index) => (index % 2 === 0 ? -20 : 20) });
   gsap.set(".main_logo_text .text3 img", { y: (index) => (index % 2 === 0 ? -20 : 20) });
 }
+
 
 // 각 버튼 클릭 시 해당 섹션으로 스르륵 스크롤 이동 설정
 document.querySelector('#tointro').addEventListener('click', function(event) {
