@@ -612,8 +612,8 @@ body.show-content .main-content {
 .alert_box {
   position: absolute;
   right: 125px;
-  bottom: -165px;
   width: 578px;
+  z-index:99;
   box-shadow: 10px 11px 0 #1c1c1c;
   border: 2px solid #213854;
   background-color: #f7f7f7;
