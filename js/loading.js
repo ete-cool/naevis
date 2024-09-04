@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
         typeText(document.querySelector(selector), text);
     });
 
+    // 3초 뒤에 loading 화면을 자동으로 숨기기
+    const loadingElement = document.querySelector('.loading');
+    setTimeout(() => {
+        loadingElement.classList.add('hidden');
+    }, 3000); // 3000 milliseconds = 3 seconds
+
     // Apply typewriter effect to part1-title elements when they enter the viewport
     const part1Elements = [
         { selector: '.part_label span', text: 'Part1' },
@@ -137,11 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             const originalText = timeSpan.parentElement.textContent.split('\n')[0]; // Preserve original text like "TAPE" or "CH 0"
             timeSpan.textContent = originalText + '\n' + formattedTime; // Update only the time text
-        }, 1000); // Update every second
+        }, 4444); // Update every second
     }
-
-    const loadingElement = document.querySelector('.loading');
-    loadingElement.addEventListener('click', function () {
-        loadingElement.classList.add('hidden');
-    });
 });

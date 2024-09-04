@@ -59,6 +59,43 @@ body.show-content .main-content {
   color: white;
   font-size: 1.5rem;
 }
+
+
+@-webkit-keyframes wiggle {
+    0% { -webkit-transform: skewX(24deg); } 
+    10% { -webkit-transform: skewX(-8deg); }
+    20% { -webkit-transform: skewX(55deg); }
+    30% { -webkit-transform: skewX(-90deg); }
+    40% { -webkit-transform: skewX(29deg); }
+    50% { -webkit-transform: skewX(-90deg); }
+    60% { -webkit-transform: skewX(3deg); }
+    70% { -webkit-transform: skewX(-2deg); }
+    80% { -webkit-transform: skewX(1deg); }
+    90% { -webkit-transform: skewX(10deg); }
+    100% { -webkit-transform: skewX(0deg); }
+}
+.loading-center:hover {
+    -webkit-animation: wiggle 0.4s;
+  }
+  
+  .loading-center {
+    cursor: pointer;
+    color:rgba(255,255,255,0.95);
+    text-shadow:1px 1px rgba(246, 0, 152, 0.227),
+               -1px -1px rgba(15, 210, 255,0.8),
+               -1px 0px rgb(255, 252, 166);
+  }
+  
+  .loading-center:hover {
+    -webkit-animation: wiggle 0.2s 2;
+    /*transition:all ease-out 0.1s;*/
+    text-shadow:30px 13px rgba(246, 0, 152, 0.227),
+               -38px -4px rgba(15, 210, 255,0.8),
+               -2px -4px rgba(255, 210, 0, 1);
+  
+  }
+
+
 .loading-center {
   justify-content: center;
   font-family: 'PP NeueBit';
