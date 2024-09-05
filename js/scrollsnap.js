@@ -148,6 +148,80 @@ function resetPosition(selector) {
   gsap.set(selector, { opacity: 0, y: 50 }); 
 }
 
+
+
+// 새로운 타임라인 추가
+const part1Tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".part1", 
+    start: "top 80%", 
+    end: "+=1000", 
+    scrub: 1,
+    markers: false,
+  }
+});
+
+// part1-title의 라벨이 서서히 등장
+part1Tl.fromTo(
+  ".part1-title .part_label",
+  { opacity: 0, y: 20 },
+  { opacity: 1, y: 0, duration: 1 }
+)
+.fromTo(
+  ".alert_box",
+  { opacity: 0, y: 20 },
+  { opacity: 1, y: 0, duration: 1 },
+  "+=0.5" // alert_box가 나타나기 전에 타이핑 효과 적용
+);
+
+// part_title span에 타이핑 효과 적용
+document.querySelectorAll(".part_title span").forEach((span) => {
+  // 각 span 요소의 텍스트를 개별 문자로 분리
+  const splitTextInstance = new SplitText(span, { type: "chars" });
+  const chars = splitTextInstance.chars; // 각 문자를 배열로 분리
+
+  gsap.set(chars, { opacity: 0 }); // 초기 상태 설정
+
+  gsap.to(chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05, // 각 문자가 순차적으로 나타나도록 설정
+    scrollTrigger: {
+      trigger: span,
+      start: "top 90%", 
+      toggleActions: "play none none reset"
+    }
+  });
+});
+
+// 텍스트 타자 효과 설정
+const titleText = new SplitText("#part1Tit", { type: "chars" });
+const chars = titleText.chars; // 각 문자를 분리하여 배열로 만듦
+
+gsap.set(chars, { opacity: 0 });
+
+gsap.to(chars, {
+  opacity: 1,
+  duration: 0.05,
+  ease: "none",
+  stagger: 0.05, // 각 문자가 차례로 나타나도록 설정
+  scrollTrigger: {
+    trigger: "#part1Tit",
+    start: "top 90%", 
+    toggleActions: "play none none reset"
+  }
+});
+
+// 'yes!' 버튼을 클릭 시 슬라이더로 부드럽게 이동
+document.querySelector(".alert_btn").addEventListener("click", () => {
+  gsap.to(window, { duration: 1, scrollTo: ".slider" });
+});
+
+
+
+
+
 // 새로운 타임라인 추가
 const questionTl = gsap.timeline({
   scrollTrigger: {
