@@ -634,6 +634,7 @@ body.show-content .main-content {
   outline: 1px solid #000;
   animation: bounce 0.5s infinite alternate;
 }
+.game-group-start .game-start{ animation: bounce 0.3s infinite alternate;}
 @keyframes bounce {
   from {
     transform: translateY(0);
@@ -1938,6 +1939,7 @@ body.show-content .main-content {
   left: unset;
   right: 20rem;
   top: 78px;
+  
 }
 .part2_guitar {
   bottom: 81px;
