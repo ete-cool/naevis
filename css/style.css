@@ -74,7 +74,39 @@ body.show-content .main-content {
   color: white;
   font-size: 1.5rem;
 }
+@-webkit-keyframes wiggle {
+  0% { -webkit-transform: skewX(24deg); } 
+  10% { -webkit-transform: skewX(-8deg); }
+  20% { -webkit-transform: skewX(55deg); }
+  30% { -webkit-transform: skewX(-90deg); }
+  40% { -webkit-transform: skewX(29deg); }
+  50% { -webkit-transform: skewX(-90deg); }
+  60% { -webkit-transform: skewX(3deg); }
+  70% { -webkit-transform: skewX(-2deg); }
+  80% { -webkit-transform: skewX(1deg); }
+  90% { -webkit-transform: skewX(10deg); }
+  100% { -webkit-transform: skewX(0deg); }
+}
+.loading-center:hover {
+  -webkit-animation: wiggle 0.4s;
+}
 
+.loading-center {
+  cursor: pointer;
+  color:rgba(255,255,255,0.95);
+  text-shadow:1px 1px rgba(246, 0, 152, 0.227),
+             -1px -1px rgba(15, 210, 255,0.8),
+             -1px 0px rgb(255, 252, 166);
+}
+
+.loading-center:hover {
+  -webkit-animation: wiggle 0.2s 2;
+  /*transition:all ease-out 0.1s;*/
+  text-shadow:30px 13px rgba(246, 0, 152, 0.227),
+             -38px -4px rgba(15, 210, 255,0.8),
+             -2px -4px rgba(255, 210, 0, 1);
+
+}
 
 .loading-center {
   justify-content: center;
@@ -569,7 +601,12 @@ body.show-content .main-content {
 }
 .slider {
   position: relative;
-  margin-top: 146px;
+  margin-top: 39vh;
+}
+.slider_list_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .slider::before {
   display: block;
@@ -578,37 +615,14 @@ body.show-content .main-content {
   left: 0;
   z-index: -1;
   width: 100vw;
-  height: 3399px;
+  height: 400vh;
   background: url(../img/stroke_gold2.png) no-repeat;
+  background-size: cover;
   content: '';
 }
 .slider .slider_list {
   display: flex;
 }
-.slider_list_wrapper {
-  width: 100%;
-  overflow: hidden; /* Hide the overflow to create a clean scrolling effect */
-  position: relative;
-}
-
-.slider_list {
-  display: flex;
-  animation: scroll 10s linear infinite; /* Apply infinite scrolling animation */
-}
-
-.slider_item {
-  flex-shrink: 0; /* Prevent items from shrinking */
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Scroll by 50% to cover one complete set of items */
-  }
-}
-
 .alert_box {
   position: absolute;
   right: 125px;
@@ -712,7 +726,7 @@ body.show-content .main-content {
   transition: transform 1s ease, opacity 1s ease; /* 애니메이션 효과 */
 }
 .question {
-  margin-top: 437px;
+  margin-top: 10vh;
   padding: 3rem;
   /* height: 277vh; */
 }
@@ -864,7 +878,7 @@ body.show-content .main-content {
 }
 .question_row.row3 .left .question_box + .question_box {
   display: block;
-  width: 58%;
+  width: 47%;
   margin-top: 133px;
 }
 .question_row.row3 .right {
@@ -951,7 +965,7 @@ body.show-content .main-content {
   position: relative;
   padding: 0 3rem;
   font-size: 0;
-  margin-bottom: 10rem;
+  margin-bottom: 6rem;
 }
 .part2 .photo_area .photo_img {
   display: inline-block;
@@ -963,7 +977,7 @@ body.show-content .main-content {
 .part2 .photo_area .photo_img.img2 {
 }
 .part2 .question_area {
-  padding-bottom: 105px;
+  display: flex;flex-direction: column;gap: 1rem;
 }
 .part2 .question_area .question_tit {
   font-size: 27px;
@@ -986,7 +1000,6 @@ body.show-content .main-content {
 }
 .part2 .favorite_snap {
   position: relative;
-  padding-bottom: 275px;
   font-size: 0;
 }
 /* .part2 .favorite_snap:before {
@@ -1011,6 +1024,10 @@ body.show-content .main-content {
   transition: transform 0.2s ease-out, z-index 0.1s; /* 부드러운 전환 효과 */
   cursor: pointer; /* 커서 모양 변경 */
 }
+.snap1 {margin-left: 13vw;}
+.snap2 { margin-left:-6vw}
+.snap3 { margin-top:9vw}
+.snap4 { margin-left:-19vw}
 /* .part2 .favorite_snap .snap_img.img1 {
   z-index: 1;
   top: 273px;
@@ -1032,7 +1049,6 @@ body.show-content .main-content {
   padding-bottom: 368px;
   background: url(../img/game_source.png) repeat-x;
   background-position: bottom center;
-  margin-top: 250px;
 }
 .part2 .alert_boxes .alert_box {
   position: relative;
@@ -1477,7 +1493,7 @@ body.show-content .main-content {
 .chatbox .chat_container .chat-bubble.right {
   max-width: 815px;
   margin-top: 43px;
-  margin-left: 870px;
+  margin-left: 53vw;
   background-color: #50a6ff;
   position: relative;
 }
@@ -1682,6 +1698,12 @@ body.show-content .main-content {
   border-radius: 50%;
   display: grid;
   place-items: center;
+}
+
+.playpause:hover {
+  background-color: white;
+  color: #7d30fa;
+  transition: 1s;
 }
 .fa-play {
   position: relative;

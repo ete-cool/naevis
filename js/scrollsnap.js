@@ -166,33 +166,138 @@ questionTl.fromTo(
   { opacity: 1, x: 0, duration: 1 }
 )
 
-// part1_02와 part1_03가 오른쪽에서 등장하고 동시에 image_layer는 왼쪽에서 빠르게 등장
-.fromTo(
-  ".image_layer",
-  { opacity: 0, x: -100 }, 
-  { opacity: 1, x: 0, duration: 1 },
-  "+=0.2" 
-)
+// question_title 타자 효과 애니메이션 추가
+.add(() => {
+  const titleSplit = new SplitText(".part1_01 .question_title", { type: "chars" });
+  gsap.set(titleSplit.chars, { opacity: 0 });
+
+  gsap.to(titleSplit.chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05,
+    onComplete: () => {
+      const descSplit = new SplitText(".part1_01 .question_dec", { type: "chars" });
+      gsap.set(descSplit.chars, { opacity: 0 });
+
+      gsap.to(descSplit.chars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.05,
+      });
+    }
+  });
+}, "-=1") 
+
+// part1_02가 오른쪽에서 등장
 .fromTo(
   ".part1_02",
   { opacity: 0, x: 100 }, 
   { opacity: 1, x: 0, duration: 1 },
-  "-=1" 
+  "+=0.2" 
 )
+
+// part1_02의 question_tit2 타이핑 효과가 끝난 후 question_desc type2 타이핑 효과가 시작되도록 설정
+.add(() => {
+  const tit2Split = new SplitText(".part1_02 .question_tit2", { type: "chars" });
+  gsap.set(tit2Split.chars, { opacity: 0 });
+
+  gsap.to(tit2Split.chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05,
+    onComplete: () => {
+      const desc2Split = new SplitText(".part1_02 .question_desc.type2", { type: "chars" });
+      gsap.set(desc2Split.chars, { opacity: 0 });
+
+      gsap.to(desc2Split.chars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.05,
+      });
+    }
+  });
+})
+
+// part1_03가 part1_02 이후에 등장
 .fromTo(
   ".part1_03",
   { opacity: 0, x: 100 }, 
   { opacity: 1, x: 0, duration: 1 },
-  "-=1" 
+  "+=0.2" 
 )
 
-// row3의 left가 왼쪽에서 등장하고 동시에 right가 오른쪽에서 등장
+// part1_03의 question_tit2 타이핑 효과가 끝난 후 question_desc type2 타이핑 효과가 시작되도록 설정
+.add(() => {
+  const tit2Split3 = new SplitText(".part1_03 .question_tit2", { type: "chars" });
+  gsap.set(tit2Split3.chars, { opacity: 0 });
+
+  gsap.to(tit2Split3.chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05,
+    onComplete: () => {
+      const desc2Split3 = new SplitText(".part1_03 .question_desc.type2", { type: "chars" });
+      gsap.set(desc2Split3.chars, { opacity: 0 });
+
+      gsap.to(desc2Split3.chars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.05,
+      });
+    }
+  });
+})
+
+
+// image_layer는 왼쪽에서 빠르게 등장 (동시에 실행)
 .fromTo(
-  ".row3 .left",
+  ".image_layer",
   { opacity: 0, x: -100 }, 
   { opacity: 1, x: 0, duration: 1 },
+  "-=1.5" // part1_02와 part1_03이 등장할 때 동시에 등장
+)
+
+// row3의 left 내의 두 개의 question_box가 순차적으로 왼쪽에서 등장
+.fromTo(
+  ".row3 .left .question_box", 
+  { opacity: 0, x: -100 }, 
+  { opacity: 1, x: 0, duration: 1, stagger: 0.2 }, 
   "+=0.3"
 )
+
+// 각 question_box의 question_title과 question_dec에 타자 효과 적용
+.add(() => {
+  document.querySelectorAll(".row3 .left .question_box").forEach((box) => {
+    const titleSplitBox = new SplitText(box.querySelector(".question_title"), { type: "chars" });
+    gsap.set(titleSplitBox.chars, { opacity: 0 });
+
+    gsap.to(titleSplitBox.chars, {
+      opacity: 1,
+      duration: 0.05,
+      ease: "none",
+      stagger: 0.05,
+      onComplete: () => {
+        const descSplitBox = new SplitText(box.querySelector(".question_dec"), { type: "chars" });
+        gsap.set(descSplitBox.chars, { opacity: 0 });
+
+        gsap.to(descSplitBox.chars, {
+          opacity: 1,
+          duration: 0.05,
+          ease: "none",
+          stagger: 0.05,
+        });
+      }
+    });
+  });
+})
+
+// row3의 right가 오른쪽에서 등장
 .fromTo(
   ".row3 .right",
   { opacity: 0, x: 100 }, 
@@ -201,11 +306,7 @@ questionTl.fromTo(
 );
 
 // 초기 위치 설정
-gsap.set(".part1_01, .part1_02, .part1_03, .image_layer, .row3 .left, .row3 .right", { opacity: 0, x: -100 });
-
-
-
-
+gsap.set(".part1_01, .part1_02, .part1_03, .image_layer, .row3 .left .question_box, .row3 .right", { opacity: 0, x: -100 });
 
 // 통합 타임라인 - Part 2 및 Photo Area
 const part2Tl = gsap.timeline({
@@ -226,8 +327,8 @@ part2Tl.from(".part2 .logo_part .part_label", { opacity: 0, y: -50, duration: 1 
   .from(".text_line1", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
   .from(".text_line2", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
   .from(".part2_flower_cloud", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
-   // 이미지 요소들 더 빨리 등장하도록 타이밍 조정
-   .fromTo(
+  // 이미지 요소들 더 빨리 등장하도록 타이밍 조정
+  .fromTo(
     ".photo_img.img1",
     { opacity: 0, x: -100 }, 
     { opacity: 1, x: 0, duration: 1 },
@@ -238,12 +339,49 @@ part2Tl.from(".part2 .logo_part .part_label", { opacity: 0, y: -50, duration: 1 
     { opacity: 0, x: 100 }, 
     { opacity: 1, x: 0, duration: 1 },
     "-=0.8" // 이미지가 더 빠르게 등장하도록 조정
-  )
-
+  );
 
 // 초기 위치 설정
 gsap.set(".part2 .logo_part .part_label, .part2-cloud1, .logo_text, .part2-cloud2, .text_line1, .text_line2, .part2_flower_cloud, .photo_img.img1, .photo_img.img2", { opacity: 0, y: -50 });
 
+// 새로운 타임라인 - .part2 .alert_boxes
+const alertBoxesTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".part2 .alert_boxes", 
+    start: "top 80%", // .alert_boxes의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "+=1000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
+    scrub: 1,
+    markers: false, 
+  }
+});
+
+// alert_boxes 내부의 각 box에 대한 애니메이션
+alertBoxesTl.fromTo(
+  ".part2 .alert_boxes .box1",
+  { opacity: 0, x: -200 }, // 왼쪽에서 등장
+  { opacity: 1, x: 0, duration: 1 }
+)
+.fromTo(
+  ".part2 .alert_boxes .box2",
+  { opacity: 0, x: 200 }, // 오른쪽에서 등장
+  { opacity: 1, x: 0, duration: 1 },
+  "-=0.8" // box1과 약간 겹치게 등장
+)
+.fromTo(
+  ".part2 .alert_boxes .box3",
+  { opacity: 0, x: -200 }, // 왼쪽에서 등장
+  { opacity: 1, x: 0, duration: 1 },
+  "+=0.5" // box1, box2 애니메이션이 끝난 후 등장
+);
+
+// 초기 위치 설정
+gsap.set(".part2 .alert_boxes .box1, .part2 .alert_boxes .box2, .part2 .alert_boxes .box3", { opacity: 0 });
+
+// SplitText 사용을 위한 준비 (GSAP 플러그인 로드 필요)
+gsap.registerPlugin(SplitText);
+
+// SplitText로 헤드라인을 글자별로 분리
+const splitHeadline = new SplitText(".part3 .head_line", { type: "chars" });
 
 // 새로운 타임라인 추가 - Part 3
 const part3Tl = gsap.timeline({
@@ -258,7 +396,13 @@ const part3Tl = gsap.timeline({
 
 // Part 3 요소들이 위에서부터 차례대로 등장
 part3Tl.from(".part3 .part_label", { opacity: 0, y: -50, duration: 1 })
-  .from(".part3 .head_line", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
+  .from(splitHeadline.chars, { // 한 글자씩 애니메이션
+    opacity: 0,
+    y: -50,
+    duration: 1,
+    stagger: 0.05, // 글자 사이에 지연 시간 추가
+    ease: "power2.out"
+  }, "-=0.8")
   .from(".part3 .frame_img.img1", { opacity: 0, x: -100, duration: 1 }, "-=0.8")
   .from(".part3 .frame_img.img2", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
   .from(".part3 .bubble1", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
@@ -266,11 +410,9 @@ part3Tl.from(".part3 .part_label", { opacity: 0, y: -50, duration: 1 })
   .from(".part3 .text_box p:nth-child(2)", { opacity: 0, y: -50, duration: 1 }, "-=0.8");
 
 // 초기 위치 설정
-gsap.set(".part3 .part_label, .part3 .head_line, .part3 .frame_img.img1, .part3 .frame_img.img2, .part3 .bubble1, .part3 .text_box p", { opacity: 0, y: -50 });
+gsap.set(".part3 .part_label, .part3 .frame_img.img1, .part3 .frame_img.img2, .part3 .bubble1, .part3 .text_box p", { opacity: 0, y: -50 });
 gsap.set(".part3 .frame_img.img1, .part3 .frame_img.img2", { x: 100 });
 gsap.set(".part3 .bubble1", { scale: 0.5 });
-
-
 // 새로운 타임라인 추가 - Interview 섹션
 const interviewTl = gsap.timeline({
   scrollTrigger: {
@@ -287,6 +429,39 @@ interviewTl.from(".interview.type3 .interview_left", { opacity: 0, x: -100, dura
   .from(".interview.type3 .interview_right", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
   .from(".official_logo", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
   .from(".official_logo .bubble2", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.5");
+
+// 인터뷰 type3의 left 요소들에 대한 애니메이션
+document.querySelectorAll(".interview.type3 .interview_left .inner").forEach((inner) => {
+  // 첫 번째 inner의 애니메이션 설정
+  const questionSplit = new SplitText(inner.querySelector(".interview_question"), { type: "chars" });
+  const descSplit = new SplitText(inner.querySelector(".interv_desc"), { type: "chars" });
+
+  gsap.set(questionSplit.chars, { opacity: 0 });
+  gsap.set(descSplit.chars, { opacity: 0 });
+
+  // 질문 텍스트의 애니메이션
+  gsap.to(questionSplit.chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05,
+    scrollTrigger: {
+      trigger: inner,
+      start: "top 90%", 
+      toggleActions: "play none none reset"
+    },
+    onComplete: () => {
+      // 설명 텍스트의 애니메이션이 question이 끝난 후에 시작되도록 설정
+      gsap.to(descSplit.chars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.05,
+        delay: 0.1 // 약간의 지연을 주어 자연스러운 전환
+      });
+    }
+  });
+});
 
 // 초기 위치 설정
 gsap.set(".interview.type3 .interview_left, .interview.type3 .interview_right, .official_logo, .official_logo .bubble2", { opacity: 0 });
@@ -310,16 +485,47 @@ const interviewType2Tl = gsap.timeline({
 interviewType2Tl.from(".interview.type2 .interview_right", { opacity: 0, x: 100, duration: 1 })
   .from(".interview.type2 .interview_left", { opacity: 0, x: -100, duration: 1 }, "-=0.8");
 
+// 인터뷰 left 요소들에 대한 애니메이션
+document.querySelectorAll(".interview.type2 .interview_left .inner").forEach((inner) => {
+  // 첫 번째 inner의 애니메이션 설정
+  const questionSplit = new SplitText(inner.querySelector(".interview_question"), { type: "chars" });
+  const descSplit = new SplitText(inner.querySelector(".interv_desc"), { type: "chars" });
+
+  gsap.set(questionSplit.chars, { opacity: 0 });
+  gsap.set(descSplit.chars, { opacity: 0 });
+
+  // 질문 텍스트의 애니메이션
+  gsap.to(questionSplit.chars, {
+    opacity: 1,
+    duration: 0.05,
+    ease: "none",
+    stagger: 0.05,
+    scrollTrigger: {
+      trigger: inner,
+      start: "top 90%", 
+      toggleActions: "play none none reset"
+    },
+    onComplete: () => {
+      // 설명 텍스트의 애니메이션
+      gsap.to(descSplit.chars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.05,
+      });
+    }
+  });
+});
+
 // 초기 위치 설정
 gsap.set(".interview.type2 .interview_left, .interview.type2 .interview_right", { opacity: 0 });
 gsap.set(".interview.type2 .interview_left", { x: -100 });
 gsap.set(".interview.type2 .interview_right", { x: 100 });
-
 // Part 4 요소들이 등장
 const part4Tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".part4", 
-    start: "top 70%", // .part4의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    start: "top 70%", // .part4의 상단이 뷰포트의 70% 지점에 도달할 때 시작
     end: "+=2000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
     scrub: 1,
     markers: false, 
@@ -329,10 +535,20 @@ const part4Tl = gsap.timeline({
 part4Tl.from(".part4 .part_label", { opacity: 0, y: -50, duration: 1 })
   .from(".part4 .after_all", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
   .from(".part4 .descbox", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
-  .from(".part4 .naevis_logo", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8")
-  
-  // Chatbox 섹션의 요소들이 대화하는 것처럼 순차적으로 등장
-  .from(".part4 .chatbox .chat_container:first-child .chat-bubble.left", { opacity: 0, x: -100, duration: 1 }, "-=0.8")
+  .from(".part4 .naevis_logo", { opacity: 0, scale: 0.5, duration: 1 }, "-=0.8");
+
+// Chatbox 섹션의 요소들이 대화하는 것처럼 순차적으로 등장하는 타임라인
+const chatboxTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".part4 .chatbox", 
+    start: "top 80%", // .chatbox의 상단이 뷰포트의 80% 지점에 도달할 때 시작
+    end: "+=2000", // 애니메이션이 실행되는 기간 (필요에 따라 조정)
+    scrub: 1,
+    markers: false, 
+  }
+});
+
+chatboxTl.from(".part4 .chatbox .chat_container:first-child .chat-bubble.left", { opacity: 0, x: -100, duration: 1 })
   .from(".part4 .chatbox .chat_container:first-child img:not(.chat-bubble)", { opacity: 0, y: -50, duration: 1 }, "-=0.8")
   .from(".part4 .chatbox .chat_container:first-child .chat-bubble.right", { opacity: 0, x: 100, duration: 1 }, "-=0.8")
 
@@ -349,10 +565,12 @@ part4Tl.from(".part4 .part_label", { opacity: 0, y: -50, duration: 1 })
   .from(".part4 .chatbox .chat_container:nth-child(4) .chat-bubble.right", { opacity: 0, x: 100, duration: 1 }, "-=0.8");
 
 // 초기 위치 설정 - part4 전용
-gsap.set(".part4 .part_label, .part4 .after_all, .part4 .descbox, .part4 .naevis_logo, .part4 .chatbox .chat_container .chat-bubble, .part4 .chatbox .chat_container img", { opacity: 0 });
-gsap.set(".part4 .chatbox .chat_container .chat-bubble.left", { x: -100 });
-gsap.set(".part4 .chatbox .chat_container .chat-bubble.right", { x: 100 });
-gsap.set(".part4 .chatbox .chat_container img:not(.chat-bubble)", { y: -50 });
+gsap.set(".part4 .part_label, .part4 .after_all, .part4 .descbox, .part4 .naevis_logo", { opacity: 0 });
+gsap.set(".part4 .chatbox .chat_container .chat-bubble.left", { opacity: 0, x: -100 });
+gsap.set(".part4 .chatbox .chat_container .chat-bubble.right", { opacity: 0, x: 100 });
+gsap.set(".part4 .chatbox .chat_container img:not(.chat-bubble)", { opacity: 0, y: -50 });
+
+
 // 새로운 타임라인 추가 - Last Contents 섹션
 const lastContentsTl = gsap.timeline({
   scrollTrigger: {
@@ -372,47 +590,5 @@ lastContentsTl.from(".last-contents__inner ul li img.cover_character", { opacity
 
 // 초기 위치 설정
 gsap.set(".last-contents__inner ul li img.cover_character, .last-contents__inner .text-box p, .last-contents__inner .text-box .clouds, .last-contents__inner .sns-box li", { opacity: 0, y: -50 });
-gsap.registerPlugin(SplitText, ScrollTrigger);
-// 모든 요소 선택
-const titles = document.querySelectorAll(".question_title, .question_tit2, ._tit, .interview_question, .chat-title");
-const descriptions = document.querySelectorAll(".question_dec, ._desc, .interv_desc, .chat-desc");
 
-// 제목 애니메이션 설정 (타자 효과)
-titles.forEach((title) => {
-  var splitTitle = new SplitText(title, { type: "chars" });
-  var chars = splitTitle.chars; // 각 문자를 분리하여 배열로 만듦
 
-  gsap.set(chars, { opacity: 0 });
-
-  gsap.to(chars, {
-    opacity: 1,
-    duration: 0.05,
-    ease: "none",
-    stagger: 0.05, // 각 문자가 차례로 나타나도록 설정
-    scrollTrigger: {
-      trigger: title,
-      start: "top 90%", // 화면의 90% 높이에서 트리거
-      toggleActions: "play none none reset", // 다시 실행되도록 설정
-    }
-  });
-});
-
-// 설명 애니메이션 설정 (타자 효과)
-descriptions.forEach((desc) => {
-  var splitTextInstance = new SplitText(desc, { type: "words,chars" });
-  var chars = splitTextInstance.chars; // 각 문자를 분리하여 배열로 만듦
-
-  gsap.set(chars, { opacity: 0 });
-
-  gsap.to(chars, {
-    opacity: 1,
-    duration: 0.009,
-    ease: "none",
-    stagger: 0.05, // 각 문자가 차례로 나타나도록 설정
-    scrollTrigger: {
-      trigger: desc,
-      start: "top 90%", // 화면의 90% 높이에서 트리거
-      toggleActions: "play none none reset", // 다시 실행되도록 설정
-    }
-  });
-});

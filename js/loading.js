@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const elements = [
         { selector: '.loading-top-left', text: 'CH 0\nPLAY\n0:00:00' },
         { selector: '.loading-top-right', text: 'TAPE\nREC\n0:00:00' },
-        { selector: '.loading-bottom', text: 'Hello, real world\nSRC' },
-        { selector: '.loading-center h3', text: '1991 REAL WORLD' },
-        { selector: '.loading-center h1', text: 'nævis calling...' }
+        { selector: '.loading-bottom', text: 'Hello, real world\nSRC' }
     ];
 
     // Apply typewriter effect to each element in the loading screen
@@ -23,63 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (loadingElement) {
             loadingElement.classList.add('hidden');
         }
+        // Start the profile typewriter effect
+        startProfileTypewriter();
     }, 3000); // 3000 milliseconds = 3 seconds
-
-    // Elements for Part 1 animation
-    const part1Elements = [
-        { selector: '.part_label span', text: 'Part1' },
-        { selector: '.part_title span:nth-child(1)', text: 'FROM KWANGYA' },
-        { selector: '.part_title span:nth-child(2)', text: 'TO REAL WORLD' }
-    ];
-
-    // Observer to apply typewriter effect when elements enter the viewport
-    const part1Observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                part1Elements.forEach(({ selector, text }) => {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        element.textContent = ''; // Clear content to reset animation
-                        typeText(element, text);
-                    }
-                });
-                part1Observer.unobserve(entry.target); // Stop observing once animated
-            }
-        });
-    }, { threshold: 0.1 });
-
-    const part1Section = document.querySelector('.part1-title');
-    if (part1Section) {
-        part1Observer.observe(part1Section);
-    }
-
-    // Elements for profile section animation
-    const profileElements = [
-        { selector: '.profile_text', text: 'nævis calling' },
-        { selector: '.profile_desc', text: 'name : naevis\nheight : 168cm\nsymbol : butterfly\norigin: Digital World "KWANGYA"\ndebut: 24.09.10 “Done”\nspecialty: Flexible Character' },
-        { selector: '.profile_date', text: '2024.09.23' }
-    ];
-
-    // Observer to apply typewriter effect to profile section
-    const profileObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                profileElements.forEach(({ selector, text }) => {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        element.textContent = ''; // Clear content to reset animation
-                        typeText(element, text);
-                    }
-                });
-                profileObserver.disconnect(); // Stop observing once animated
-            }
-        });
-    });
-
-    const profileSection = document.querySelector('.profile_right');
-    if (profileSection) {
-        profileObserver.observe(profileSection);
-    }
 
     // Function to apply typewriter effect
     function typeText(element, text) {
@@ -170,5 +114,48 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             timeSpan.textContent = formattedTime; // Only update the dynamic time
         }, 1000); // Update every second
+    }
+
+    // Function to start typewriter effect for profile content
+    function startProfileTypewriter() {
+        const profileTextElements = document.querySelectorAll('.profile_info .profile_text, .profile_info .profile_desc ul li');
+        let currentIndex = 0;
+
+        // Store the original text for each profile element in a data attribute
+        profileTextElements.forEach(element => {
+            const originalText = element.textContent.trim();
+            element.setAttribute('data-text', originalText); // Store the text in a data attribute
+            element.textContent = ''; // Clear content to start with an empty state
+        });
+
+        function typeNextProfileElement() {
+            if (currentIndex < profileTextElements.length) {
+                const element = profileTextElements[currentIndex];
+                const text = element.getAttribute('data-text'); // Retrieve original text from data attribute
+                typeProfileText(element, text, () => {
+                    currentIndex++;
+                    typeNextProfileElement(); // Move to the next element after typing the current one
+                });
+            } else {
+                // Restart the typing effect from the top
+                currentIndex = 0;
+                setTimeout(startProfileTypewriter, 2000); // Repeat after a short delay
+            }
+        }
+
+        typeNextProfileElement(); // Start the typing effect
+    }
+
+    function typeProfileText(element, text, callback) {
+        let index = 0;
+        const typingInterval = setInterval(() => {
+            element.textContent += text[index];
+            index++;
+
+            if (index === text.length) {
+                clearInterval(typingInterval);
+                callback(); // Call the callback after typing is done
+            }
+        }, 100); // Typing speed in milliseconds
     }
 });

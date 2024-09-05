@@ -9,10 +9,10 @@ body {
         .snap_img {
             width: 40%;
             position: absolute !important;
-            img {width: 100% !important;}
+            img {width: 70% !important;}
         }
         .favorite_snap {
-            position: relative;
+            position: relative;margin-top:-20vh;
             .skate-shoes { transform: translate(20%, 560%); }
             .paper-symbol { transform: translate(-20%, 300%); }
             .shine-symbol { transform: translate(20%, 10%); }
